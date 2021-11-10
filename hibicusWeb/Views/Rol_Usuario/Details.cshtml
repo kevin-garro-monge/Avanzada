@@ -1,0 +1,27 @@
+﻿@model hibicusWeb.Rol_Usuario
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Rol_Usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo_Rol)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo_Rol)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_Rol }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

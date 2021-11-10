@@ -1,0 +1,442 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="db_a7c3cb_hibicuswebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Resennia">
+          <Key>
+            <PropertyRef Name="id_Resenia" />
+          </Key>
+          <Property Name="id_Resenia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cotenido" Type="varchar" MaxLength="1024" />
+          <Property Name="id_Cliente" Type="int" Nullable="false" />
+          <Property Name="puntuacion" Type="int" Nullable="false" />
+          <Property Name="fecha" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reserva">
+          <Key>
+            <PropertyRef Name="id_Reserva" />
+          </Key>
+          <Property Name="id_Reserva" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha_Hora" Type="datetime" Nullable="false" />
+          <Property Name="id_Cliente" Type="int" Nullable="false" />
+          <Property Name="id_Empleado" Type="int" Nullable="false" />
+          <Property Name="id_Servicio" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rol_Usuario">
+          <Key>
+            <PropertyRef Name="id_Rol" />
+          </Key>
+          <Property Name="id_Rol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo_Rol" Type="varchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Servicio">
+          <Key>
+            <PropertyRef Name="id_Servicio" />
+          </Key>
+          <Property Name="id_Servicio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Tipo_Servicio" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="1024" Nullable="false" />
+          <Property Name="precio" Type="decimal" Precision="14" Scale="2" />
+        </EntityType>
+        <EntityType Name="Tipo_Servicio">
+          <Key>
+            <PropertyRef Name="id_Tipo_Servicio" />
+          </Key>
+          <Property Name="id_Tipo_Servicio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="26" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="id_Usuario" />
+          </Key>
+          <Property Name="id_Usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Rol_Usuario" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="apellido1" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="apellido2" Type="varchar" MaxLength="64" />
+          <Property Name="cedula_Usuario" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="correo" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="contrasennia" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="telefono" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="genero" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Resennia__id_Cli__398D8EEE">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Resennia" Type="Self.Resennia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="id_Usuario" />
+            </Principal>
+            <Dependent Role="Resennia">
+              <PropertyRef Name="id_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reserva__id_Clie__33D4B598">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="id_Usuario" />
+            </Principal>
+            <Dependent Role="Reserva">
+              <PropertyRef Name="id_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reserva__id_Empl__34C8D9D1">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="id_Usuario" />
+            </Principal>
+            <Dependent Role="Reserva">
+              <PropertyRef Name="id_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reserva__id_Serv__35BCFE0A">
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="1" />
+          <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicio">
+              <PropertyRef Name="id_Servicio" />
+            </Principal>
+            <Dependent Role="Reserva">
+              <PropertyRef Name="id_Servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Servicio__id_Tip__30F848ED">
+          <End Role="Tipo_Servicio" Type="Self.Tipo_Servicio" Multiplicity="1" />
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Servicio">
+              <PropertyRef Name="id_Tipo_Servicio" />
+            </Principal>
+            <Dependent Role="Servicio">
+              <PropertyRef Name="id_Tipo_Servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__id_Rol___2B3F6F97">
+          <End Role="Rol_Usuario" Type="Self.Rol_Usuario" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol_Usuario">
+              <PropertyRef Name="id_Rol" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="id_Rol_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="db_a7c3cb_hibicuswebModelStoreContainer">
+          <EntitySet Name="Resennia" EntityType="Self.Resennia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reserva" EntityType="Self.Reserva" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rol_Usuario" EntityType="Self.Rol_Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Servicio" EntityType="Self.Servicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipo_Servicio" EntityType="Self.Tipo_Servicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Resennia__id_Cli__398D8EEE" Association="Self.FK__Resennia__id_Cli__398D8EEE">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Resennia" EntitySet="Resennia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reserva__id_Clie__33D4B598" Association="Self.FK__Reserva__id_Clie__33D4B598">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Reserva" EntitySet="Reserva" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reserva__id_Empl__34C8D9D1" Association="Self.FK__Reserva__id_Empl__34C8D9D1">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Reserva" EntitySet="Reserva" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reserva__id_Serv__35BCFE0A" Association="Self.FK__Reserva__id_Serv__35BCFE0A">
+            <End Role="Servicio" EntitySet="Servicio" />
+            <End Role="Reserva" EntitySet="Reserva" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Servicio__id_Tip__30F848ED" Association="Self.FK__Servicio__id_Tip__30F848ED">
+            <End Role="Tipo_Servicio" EntitySet="Tipo_Servicio" />
+            <End Role="Servicio" EntitySet="Servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__id_Rol___2B3F6F97" Association="Self.FK__Usuario__id_Rol___2B3F6F97">
+            <End Role="Rol_Usuario" EntitySet="Rol_Usuario" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="db_a7c3cb_hibicuswebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Resennia">
+          <Key>
+            <PropertyRef Name="id_Resenia" />
+          </Key>
+          <Property Name="id_Resenia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cotenido" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="id_Cliente" Type="Int32" Nullable="false" />
+          <Property Name="puntuacion" Type="Int32" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Resennia__id_Cli__398D8EEE" FromRole="Resennia" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Reserva">
+          <Key>
+            <PropertyRef Name="id_Reserva" />
+          </Key>
+          <Property Name="id_Reserva" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha_Hora" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="id_Cliente" Type="Int32" Nullable="false" />
+          <Property Name="id_Empleado" Type="Int32" Nullable="false" />
+          <Property Name="id_Servicio" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Reserva__id_Clie__33D4B598" FromRole="Reserva" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.FK__Reserva__id_Empl__34C8D9D1" FromRole="Reserva" ToRole="Usuario" />
+          <NavigationProperty Name="Servicio" Relationship="Self.FK__Reserva__id_Serv__35BCFE0A" FromRole="Reserva" ToRole="Servicio" />
+        </EntityType>
+        <EntityType Name="Rol_Usuario">
+          <Key>
+            <PropertyRef Name="id_Rol" />
+          </Key>
+          <Property Name="id_Rol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo_Rol" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK__Usuario__id_Rol___2B3F6F97" FromRole="Rol_Usuario" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Servicio">
+          <Key>
+            <PropertyRef Name="id_Servicio" />
+          </Key>
+          <Property Name="id_Servicio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Tipo_Servicio" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="precio" Type="Decimal" Precision="14" Scale="2" />
+          <NavigationProperty Name="Reservas" Relationship="Self.FK__Reserva__id_Serv__35BCFE0A" FromRole="Servicio" ToRole="Reserva" />
+          <NavigationProperty Name="Tipo_Servicio" Relationship="Self.FK__Servicio__id_Tip__30F848ED" FromRole="Servicio" ToRole="Tipo_Servicio" />
+        </EntityType>
+        <EntityType Name="Tipo_Servicio">
+          <Key>
+            <PropertyRef Name="id_Tipo_Servicio" />
+          </Key>
+          <Property Name="id_Tipo_Servicio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="26" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Servicios" Relationship="Self.FK__Servicio__id_Tip__30F848ED" FromRole="Tipo_Servicio" ToRole="Servicio" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="id_Usuario" />
+          </Key>
+          <Property Name="id_Usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Rol_Usuario" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido1" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido2" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="cedula_Usuario" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="correo" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contrasennia" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="genero" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Resennias" Relationship="Self.FK__Resennia__id_Cli__398D8EEE" FromRole="Usuario" ToRole="Resennia" />
+          <NavigationProperty Name="Reservas" Relationship="Self.FK__Reserva__id_Clie__33D4B598" FromRole="Usuario" ToRole="Reserva" />
+          <NavigationProperty Name="Reservas1" Relationship="Self.FK__Reserva__id_Empl__34C8D9D1" FromRole="Usuario" ToRole="Reserva" />
+          <NavigationProperty Name="Rol_Usuario" Relationship="Self.FK__Usuario__id_Rol___2B3F6F97" FromRole="Usuario" ToRole="Rol_Usuario" />
+        </EntityType>
+        <Association Name="FK__Resennia__id_Cli__398D8EEE">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Resennia" Type="Self.Resennia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="id_Usuario" />
+            </Principal>
+            <Dependent Role="Resennia">
+              <PropertyRef Name="id_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reserva__id_Clie__33D4B598">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="id_Usuario" />
+            </Principal>
+            <Dependent Role="Reserva">
+              <PropertyRef Name="id_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reserva__id_Empl__34C8D9D1">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="id_Usuario" />
+            </Principal>
+            <Dependent Role="Reserva">
+              <PropertyRef Name="id_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reserva__id_Serv__35BCFE0A">
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="1" />
+          <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicio">
+              <PropertyRef Name="id_Servicio" />
+            </Principal>
+            <Dependent Role="Reserva">
+              <PropertyRef Name="id_Servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__id_Rol___2B3F6F97">
+          <End Role="Rol_Usuario" Type="Self.Rol_Usuario" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol_Usuario">
+              <PropertyRef Name="id_Rol" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="id_Rol_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Servicio__id_Tip__30F848ED">
+          <End Role="Tipo_Servicio" Type="Self.Tipo_Servicio" Multiplicity="1" />
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Servicio">
+              <PropertyRef Name="id_Tipo_Servicio" />
+            </Principal>
+            <Dependent Role="Servicio">
+              <PropertyRef Name="id_Tipo_Servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="db_a7c3cb_hibicuswebEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Resennias" EntityType="Self.Resennia" />
+          <EntitySet Name="Reservas" EntityType="Self.Reserva" />
+          <EntitySet Name="Rol_Usuario" EntityType="Self.Rol_Usuario" />
+          <EntitySet Name="Servicios" EntityType="Self.Servicio" />
+          <EntitySet Name="Tipo_Servicio" EntityType="Self.Tipo_Servicio" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK__Resennia__id_Cli__398D8EEE" Association="Self.FK__Resennia__id_Cli__398D8EEE">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Resennia" EntitySet="Resennias" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reserva__id_Clie__33D4B598" Association="Self.FK__Reserva__id_Clie__33D4B598">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Reserva" EntitySet="Reservas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reserva__id_Empl__34C8D9D1" Association="Self.FK__Reserva__id_Empl__34C8D9D1">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Reserva" EntitySet="Reservas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reserva__id_Serv__35BCFE0A" Association="Self.FK__Reserva__id_Serv__35BCFE0A">
+            <End Role="Servicio" EntitySet="Servicios" />
+            <End Role="Reserva" EntitySet="Reservas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__id_Rol___2B3F6F97" Association="Self.FK__Usuario__id_Rol___2B3F6F97">
+            <End Role="Rol_Usuario" EntitySet="Rol_Usuario" />
+            <End Role="Usuario" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Servicio__id_Tip__30F848ED" Association="Self.FK__Servicio__id_Tip__30F848ED">
+            <End Role="Tipo_Servicio" EntitySet="Tipo_Servicio" />
+            <End Role="Servicio" EntitySet="Servicios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="db_a7c3cb_hibicuswebModelStoreContainer" CdmEntityContainer="db_a7c3cb_hibicuswebEntities">
+          <EntitySetMapping Name="Resennias">
+            <EntityTypeMapping TypeName="db_a7c3cb_hibicuswebModel.Resennia">
+              <MappingFragment StoreEntitySet="Resennia">
+                <ScalarProperty Name="id_Resenia" ColumnName="id_Resenia" />
+                <ScalarProperty Name="cotenido" ColumnName="cotenido" />
+                <ScalarProperty Name="id_Cliente" ColumnName="id_Cliente" />
+                <ScalarProperty Name="puntuacion" ColumnName="puntuacion" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservas">
+            <EntityTypeMapping TypeName="db_a7c3cb_hibicuswebModel.Reserva">
+              <MappingFragment StoreEntitySet="Reserva">
+                <ScalarProperty Name="id_Reserva" ColumnName="id_Reserva" />
+                <ScalarProperty Name="fecha_Hora" ColumnName="fecha_Hora" />
+                <ScalarProperty Name="id_Cliente" ColumnName="id_Cliente" />
+                <ScalarProperty Name="id_Empleado" ColumnName="id_Empleado" />
+                <ScalarProperty Name="id_Servicio" ColumnName="id_Servicio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rol_Usuario">
+            <EntityTypeMapping TypeName="db_a7c3cb_hibicuswebModel.Rol_Usuario">
+              <MappingFragment StoreEntitySet="Rol_Usuario">
+                <ScalarProperty Name="id_Rol" ColumnName="id_Rol" />
+                <ScalarProperty Name="tipo_Rol" ColumnName="tipo_Rol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Servicios">
+            <EntityTypeMapping TypeName="db_a7c3cb_hibicuswebModel.Servicio">
+              <MappingFragment StoreEntitySet="Servicio">
+                <ScalarProperty Name="id_Servicio" ColumnName="id_Servicio" />
+                <ScalarProperty Name="id_Tipo_Servicio" ColumnName="id_Tipo_Servicio" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo_Servicio">
+            <EntityTypeMapping TypeName="db_a7c3cb_hibicuswebModel.Tipo_Servicio">
+              <MappingFragment StoreEntitySet="Tipo_Servicio">
+                <ScalarProperty Name="id_Tipo_Servicio" ColumnName="id_Tipo_Servicio" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="db_a7c3cb_hibicuswebModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="id_Usuario" ColumnName="id_Usuario" />
+                <ScalarProperty Name="id_Rol_Usuario" ColumnName="id_Rol_Usuario" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+                <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+                <ScalarProperty Name="cedula_Usuario" ColumnName="cedula_Usuario" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="contrasennia" ColumnName="contrasennia" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="genero" ColumnName="genero" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

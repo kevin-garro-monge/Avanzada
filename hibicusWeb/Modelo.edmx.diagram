@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="657fbbe7ffe04bfe8930019a7327798c" Name="Diagram1">
+        <EntityTypeShape EntityType="db_a7c3cb_hibicuswebModel.Resennia" Width="1.5" PointX="6.125" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a7c3cb_hibicuswebModel.Reserva" Width="1.5" PointX="6.125" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a7c3cb_hibicuswebModel.Rol_Usuario" Width="1.5" PointX="4" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a7c3cb_hibicuswebModel.Servicio" Width="1.5" PointX="1.875" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a7c3cb_hibicuswebModel.Tipo_Servicio" Width="1.5" PointX="1.875" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a7c3cb_hibicuswebModel.Usuario" Width="1.5" PointX="4" PointY="2.875" IsExpanded="true" />
+        <AssociationConnector Association="db_a7c3cb_hibicuswebModel.FK__Resennia__id_Cli__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a7c3cb_hibicuswebModel.FK__Reserva__id_Clie__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a7c3cb_hibicuswebModel.FK__Reserva__id_Empl__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a7c3cb_hibicuswebModel.FK__Reserva__id_Serv__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a7c3cb_hibicuswebModel.FK__Usuario__id_Rol___2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a7c3cb_hibicuswebModel.FK__Servicio__id_Tip__30F848ED" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,91 @@
+﻿@model hibicusWeb.Usuario
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.apellido1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apellido1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.apellido2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apellido2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cedula_Usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cedula_Usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.correo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.correo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.contrasennia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.contrasennia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.genero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.genero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rol_Usuario.tipo_Rol)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rol_Usuario.tipo_Rol)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_Usuario }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

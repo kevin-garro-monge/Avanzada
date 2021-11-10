@@ -1,0 +1,51 @@
+﻿@model hibicusWeb.Resennia
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Resennia</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cotenido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cotenido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.puntuacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.puntuacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_Resenia }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<hibicusWeb.Resennia>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.cotenido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.puntuacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario.nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.cotenido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.puntuacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario.nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_Resenia }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_Resenia }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_Resenia })
+        </td>
+    </tr>
+}
+
+</table>
