@@ -6,27 +6,123 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+    Styles
+    <link href="~/Content/estilos.css" rel="stylesheet" type="text/css" />
+
+    <!-- Boxicons CDN Link -->
+    <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+          rel="stylesheet" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+    </div>*@
+
+
+    <div class="sidebar">
+        <div class="logo_content">
+            <div class="logo">
+                <i class="bx bxl-c-plus-plus"></i>
+                <div class="logo_name">Hibiscus</div>
+            </div>
+            <i class="bx bx-menu" id="btn"></i>
+        </div>
+        @*List of options*@
+        <ul class="nav_list">
+            <li>
+                <i class="bx bx-search"></i>
+                <input type="text" placeholder="Buscar..." />
+                <span class="tooltip">Buscar</span>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "Home")">
+                    <i class="bx bx-grid-alt"></i>
+                    <span class="links_name">Home</span>
+                </a>
+                <span class="tooltip">Home</span>
+            </li>
+            <li>
+                <a href="@Url.Action("About", "Home")">
+                    <i class="bx bx-user"></i>
+                    <span class="links_name">About</span>
+                </a>
+                <span class="tooltip">About</span>
+            </li>
+            <li>
+                <a href="@Url.Action("Contact", "Home")">
+                    <i class="bx bx-chat"></i>
+                    <span class="links_name">Contact</span>
+                </a>
+                <span class="tooltip">Contact</span>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "Usuario")">
+                    <i class="bx bx-pie-chart-alt-2"></i>
+                    <span class="links_name">Usuarios</span>
+                </a>
+                <span class="tooltip">Usuarios</span>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "Resennia")">
+                    <i class="bx bx-folder"></i>
+                    <span class="links_name">Reseñas</span>
+                </a>
+                <span class="tooltip">Reseñas</span>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "Reserva")">
+                    <i class="bx bx-cart-alt"></i>
+                    <span class="links_name">Reservas</span>
+                </a>
+                <span class="tooltip">Reservas</span>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "Servicio")">
+                    <i class="bx bx-heart"></i>
+                    <span class="links_name">Servicios</span>
+                </a>
+                <span class="tooltip">Servicios</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bx bx-cog"></i>
+                    <span class="links_name">Setting</span>
+                </a>
+                <span class="tooltip">Setting</span>
+            </li>
+        </ul>
+        @*User part*@
+        <div class="profile_content">
+            <div class="profile">
+                <div class="profile_details">
+                    <div class="name_job">
+                        <div class="name">USER NAME</div>
+                        <div class="job">OTHER INFO</div>
+                    </div>
+                </div>
+                <i class="bx bx-log-out" id="log_out"></i>
             </div>
         </div>
     </div>
+
+
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -34,6 +130,19 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
+
+    <script>
+        let btn = document.querySelector("#btn");
+        let sidebar = document.querySelector(".sidebar");
+        let searchBtn = document.querySelector(".bx-search");
+
+        btn.onclick = function () {
+            sidebar.classList.toggle("active");
+        };
+        searchBtn.onclick = function () {
+            sidebar.classList.toggle("active");
+        };
+    </script>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
