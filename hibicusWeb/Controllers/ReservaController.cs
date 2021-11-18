@@ -12,7 +12,7 @@ namespace hibicusWeb.Controllers
 {
     public class ReservaController : Controller
     {
-        private db_a7c3cb_hibicuswebEntities db = new db_a7c3cb_hibicuswebEntities();
+        private db_a7c3cb_hibicuswebEntities2 db = new db_a7c3cb_hibicuswebEntities2();
 
         // GET: Reserva
         public ActionResult Index()

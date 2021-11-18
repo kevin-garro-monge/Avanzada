@@ -12,12 +12,12 @@ namespace hibicusWeb.Controllers
 {
     public class UsuarioController : Controller
     {
-        private db_a7c3cb_hibicuswebEntities db = new db_a7c3cb_hibicuswebEntities();
+        private db_a7c3cb_hibicuswebEntities2 db = new db_a7c3cb_hibicuswebEntities2();
 
         // GET: Usuario
         public ActionResult Index()
         {
-            var usuarios = db.Usuarios.Include(u => u.Rol_Usuario);
+            var usuarios = db.Usuarios.Include(u => u.Genero).Include(u => u.Rol_Usuario);
             return View(usuarios.ToList());
         }
 
@@ -39,6 +39,7 @@ namespace hibicusWeb.Controllers
         // GET: Usuario/Create
         public ActionResult Create()
         {
+            ViewBag.id_Genero = new SelectList(db.Generoes, "id_Genero", "Genero1");
             ViewBag.id_Rol_Usuario = new SelectList(db.Rol_Usuario, "id_Rol", "tipo_Rol");
             return View();
         }
@@ -48,7 +49,7 @@ namespace hibicusWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id_Usuario,id_Rol_Usuario,nombre,apellido1,apellido2,cedula_Usuario,correo,contrasennia,telefono,genero")] Usuario usuario)
+        public ActionResult Create([Bind(Include = "id_Usuario,id_Rol_Usuario,nombre,apellido1,apellido2,cedula_Usuario,correo,contrasennia,telefono,id_Genero")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {
@@ -57,6 +58,7 @@ namespace hibicusWeb.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.id_Genero = new SelectList(db.Generoes, "id_Genero", "Genero1", usuario.id_Genero);
             ViewBag.id_Rol_Usuario = new SelectList(db.Rol_Usuario, "id_Rol", "tipo_Rol", usuario.id_Rol_Usuario);
             return View(usuario);
         }
@@ -73,6 +75,7 @@ namespace hibicusWeb.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.id_Genero = new SelectList(db.Generoes, "id_Genero", "Genero1", usuario.id_Genero);
             ViewBag.id_Rol_Usuario = new SelectList(db.Rol_Usuario, "id_Rol", "tipo_Rol", usuario.id_Rol_Usuario);
             return View(usuario);
         }
@@ -82,7 +85,7 @@ namespace hibicusWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id_Usuario,id_Rol_Usuario,nombre,apellido1,apellido2,cedula_Usuario,correo,contrasennia,telefono,genero")] Usuario usuario)
+        public ActionResult Edit([Bind(Include = "id_Usuario,id_Rol_Usuario,nombre,apellido1,apellido2,cedula_Usuario,correo,contrasennia,telefono,id_Genero")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {
@@ -90,6 +93,7 @@ namespace hibicusWeb.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.id_Genero = new SelectList(db.Generoes, "id_Genero", "Genero1", usuario.id_Genero);
             ViewBag.id_Rol_Usuario = new SelectList(db.Rol_Usuario, "id_Rol", "tipo_Rol", usuario.id_Rol_Usuario);
             return View(usuario);
         }

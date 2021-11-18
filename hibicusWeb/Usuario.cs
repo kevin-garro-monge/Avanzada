@@ -31,8 +31,9 @@ namespace hibicusWeb
         public string correo { get; set; }
         public string contrasennia { get; set; }
         public string telefono { get; set; }
-        public string genero { get; set; }
+        public int id_Genero { get; set; }
     
+        public virtual Genero Genero { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Resennia> Resennias { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

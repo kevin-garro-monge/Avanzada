@@ -12,7 +12,7 @@ namespace hibicusWeb.Controllers
 {
     public class ResenniaController : Controller
     {
-        private db_a7c3cb_hibicuswebEntities db = new db_a7c3cb_hibicuswebEntities();
+        private db_a7c3cb_hibicuswebEntities2 db = new db_a7c3cb_hibicuswebEntities2();
 
         // GET: Resennia
         public ActionResult Index()

@@ -5,6 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="db_a7c3cb_hibicuswebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Genero">
+          <Key>
+            <PropertyRef Name="id_Genero" />
+          </Key>
+          <Property Name="id_Genero" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Genero" Type="varchar" MaxLength="128" Nullable="false" />
+        </EntityType>
         <EntityType Name="Resennia">
           <Key>
             <PropertyRef Name="id_Resenia" />
@@ -61,9 +68,9 @@
           <Property Name="correo" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="contrasennia" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="telefono" Type="varchar" MaxLength="16" Nullable="false" />
-          <Property Name="genero" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="id_Genero" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Resennia__id_Cli__398D8EEE">
+        <Association Name="FK__Resennia__id_Cli__3C69FB99">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Resennia" Type="Self.Resennia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -75,7 +82,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Reserva__id_Clie__33D4B598">
+        <Association Name="FK__Reserva__id_Clie__36B12243">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
           <ReferentialConstraint>
@@ -87,7 +94,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Reserva__id_Empl__34C8D9D1">
+        <Association Name="FK__Reserva__id_Empl__37A5467C">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
           <ReferentialConstraint>
@@ -99,7 +106,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Reserva__id_Serv__35BCFE0A">
+        <Association Name="FK__Reserva__id_Serv__38996AB5">
           <End Role="Servicio" Type="Self.Servicio" Multiplicity="1" />
           <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
           <ReferentialConstraint>
@@ -111,7 +118,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Servicio__id_Tip__30F848ED">
+        <Association Name="FK__Servicio__id_Tip__33D4B598">
           <End Role="Tipo_Servicio" Type="Self.Tipo_Servicio" Multiplicity="1" />
           <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -123,7 +130,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Usuario__id_Rol___2B3F6F97">
+        <Association Name="FK__Usuario__id_Gene__2E1BDC42">
+          <End Role="Genero" Type="Self.Genero" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genero">
+              <PropertyRef Name="id_Genero" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="id_Genero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__id_Rol___2D27B809">
           <End Role="Rol_Usuario" Type="Self.Rol_Usuario" Multiplicity="1" />
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
           <ReferentialConstraint>
@@ -136,33 +155,38 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="db_a7c3cb_hibicuswebModelStoreContainer">
+          <EntitySet Name="Genero" EntityType="Self.Genero" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Resennia" EntityType="Self.Resennia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reserva" EntityType="Self.Reserva" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rol_Usuario" EntityType="Self.Rol_Usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Servicio" EntityType="Self.Servicio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tipo_Servicio" EntityType="Self.Tipo_Servicio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Resennia__id_Cli__398D8EEE" Association="Self.FK__Resennia__id_Cli__398D8EEE">
+          <AssociationSet Name="FK__Resennia__id_Cli__3C69FB99" Association="Self.FK__Resennia__id_Cli__3C69FB99">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Resennia" EntitySet="Resennia" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reserva__id_Clie__33D4B598" Association="Self.FK__Reserva__id_Clie__33D4B598">
+          <AssociationSet Name="FK__Reserva__id_Clie__36B12243" Association="Self.FK__Reserva__id_Clie__36B12243">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Reserva" EntitySet="Reserva" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reserva__id_Empl__34C8D9D1" Association="Self.FK__Reserva__id_Empl__34C8D9D1">
+          <AssociationSet Name="FK__Reserva__id_Empl__37A5467C" Association="Self.FK__Reserva__id_Empl__37A5467C">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Reserva" EntitySet="Reserva" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reserva__id_Serv__35BCFE0A" Association="Self.FK__Reserva__id_Serv__35BCFE0A">
+          <AssociationSet Name="FK__Reserva__id_Serv__38996AB5" Association="Self.FK__Reserva__id_Serv__38996AB5">
             <End Role="Servicio" EntitySet="Servicio" />
             <End Role="Reserva" EntitySet="Reserva" />
           </AssociationSet>
-          <AssociationSet Name="FK__Servicio__id_Tip__30F848ED" Association="Self.FK__Servicio__id_Tip__30F848ED">
+          <AssociationSet Name="FK__Servicio__id_Tip__33D4B598" Association="Self.FK__Servicio__id_Tip__33D4B598">
             <End Role="Tipo_Servicio" EntitySet="Tipo_Servicio" />
             <End Role="Servicio" EntitySet="Servicio" />
           </AssociationSet>
-          <AssociationSet Name="FK__Usuario__id_Rol___2B3F6F97" Association="Self.FK__Usuario__id_Rol___2B3F6F97">
+          <AssociationSet Name="FK__Usuario__id_Gene__2E1BDC42" Association="Self.FK__Usuario__id_Gene__2E1BDC42">
+            <End Role="Genero" EntitySet="Genero" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__id_Rol___2D27B809" Association="Self.FK__Usuario__id_Rol___2D27B809">
             <End Role="Rol_Usuario" EntitySet="Rol_Usuario" />
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
@@ -172,6 +196,14 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="db_a7c3cb_hibicuswebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Genero">
+          <Key>
+            <PropertyRef Name="id_Genero" />
+          </Key>
+          <Property Name="id_Genero" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Genero1" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK__Usuario__id_Gene__2E1BDC42" FromRole="Genero" ToRole="Usuario" />
+        </EntityType>
         <EntityType Name="Resennia">
           <Key>
             <PropertyRef Name="id_Resenia" />
@@ -181,7 +213,7 @@
           <Property Name="id_Cliente" Type="Int32" Nullable="false" />
           <Property Name="puntuacion" Type="Int32" Nullable="false" />
           <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK__Resennia__id_Cli__398D8EEE" FromRole="Resennia" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Resennia__id_Cli__3C69FB99" FromRole="Resennia" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="Reserva">
           <Key>
@@ -192,9 +224,9 @@
           <Property Name="id_Cliente" Type="Int32" Nullable="false" />
           <Property Name="id_Empleado" Type="Int32" Nullable="false" />
           <Property Name="id_Servicio" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Usuario" Relationship="Self.FK__Reserva__id_Clie__33D4B598" FromRole="Reserva" ToRole="Usuario" />
-          <NavigationProperty Name="Usuario1" Relationship="Self.FK__Reserva__id_Empl__34C8D9D1" FromRole="Reserva" ToRole="Usuario" />
-          <NavigationProperty Name="Servicio" Relationship="Self.FK__Reserva__id_Serv__35BCFE0A" FromRole="Reserva" ToRole="Servicio" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Reserva__id_Clie__36B12243" FromRole="Reserva" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.FK__Reserva__id_Empl__37A5467C" FromRole="Reserva" ToRole="Usuario" />
+          <NavigationProperty Name="Servicio" Relationship="Self.FK__Reserva__id_Serv__38996AB5" FromRole="Reserva" ToRole="Servicio" />
         </EntityType>
         <EntityType Name="Rol_Usuario">
           <Key>
@@ -202,7 +234,7 @@
           </Key>
           <Property Name="id_Rol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="tipo_Rol" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Usuarios" Relationship="Self.FK__Usuario__id_Rol___2B3F6F97" FromRole="Rol_Usuario" ToRole="Usuario" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK__Usuario__id_Rol___2D27B809" FromRole="Rol_Usuario" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="Servicio">
           <Key>
@@ -212,8 +244,8 @@
           <Property Name="id_Tipo_Servicio" Type="Int32" Nullable="false" />
           <Property Name="descripcion" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="precio" Type="Decimal" Precision="14" Scale="2" />
-          <NavigationProperty Name="Reservas" Relationship="Self.FK__Reserva__id_Serv__35BCFE0A" FromRole="Servicio" ToRole="Reserva" />
-          <NavigationProperty Name="Tipo_Servicio" Relationship="Self.FK__Servicio__id_Tip__30F848ED" FromRole="Servicio" ToRole="Tipo_Servicio" />
+          <NavigationProperty Name="Reservas" Relationship="Self.FK__Reserva__id_Serv__38996AB5" FromRole="Servicio" ToRole="Reserva" />
+          <NavigationProperty Name="Tipo_Servicio" Relationship="Self.FK__Servicio__id_Tip__33D4B598" FromRole="Servicio" ToRole="Tipo_Servicio" />
         </EntityType>
         <EntityType Name="Tipo_Servicio">
           <Key>
@@ -221,7 +253,7 @@
           </Key>
           <Property Name="id_Tipo_Servicio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="descripcion" Type="String" MaxLength="26" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Servicios" Relationship="Self.FK__Servicio__id_Tip__30F848ED" FromRole="Tipo_Servicio" ToRole="Servicio" />
+          <NavigationProperty Name="Servicios" Relationship="Self.FK__Servicio__id_Tip__33D4B598" FromRole="Tipo_Servicio" ToRole="Servicio" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -236,13 +268,26 @@
           <Property Name="correo" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="contrasennia" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="telefono" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="genero" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Resennias" Relationship="Self.FK__Resennia__id_Cli__398D8EEE" FromRole="Usuario" ToRole="Resennia" />
-          <NavigationProperty Name="Reservas" Relationship="Self.FK__Reserva__id_Clie__33D4B598" FromRole="Usuario" ToRole="Reserva" />
-          <NavigationProperty Name="Reservas1" Relationship="Self.FK__Reserva__id_Empl__34C8D9D1" FromRole="Usuario" ToRole="Reserva" />
-          <NavigationProperty Name="Rol_Usuario" Relationship="Self.FK__Usuario__id_Rol___2B3F6F97" FromRole="Usuario" ToRole="Rol_Usuario" />
+          <Property Name="id_Genero" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Genero" Relationship="Self.FK__Usuario__id_Gene__2E1BDC42" FromRole="Usuario" ToRole="Genero" />
+          <NavigationProperty Name="Resennias" Relationship="Self.FK__Resennia__id_Cli__3C69FB99" FromRole="Usuario" ToRole="Resennia" />
+          <NavigationProperty Name="Reservas" Relationship="Self.FK__Reserva__id_Clie__36B12243" FromRole="Usuario" ToRole="Reserva" />
+          <NavigationProperty Name="Reservas1" Relationship="Self.FK__Reserva__id_Empl__37A5467C" FromRole="Usuario" ToRole="Reserva" />
+          <NavigationProperty Name="Rol_Usuario" Relationship="Self.FK__Usuario__id_Rol___2D27B809" FromRole="Usuario" ToRole="Rol_Usuario" />
         </EntityType>
-        <Association Name="FK__Resennia__id_Cli__398D8EEE">
+        <Association Name="FK__Usuario__id_Gene__2E1BDC42">
+          <End Role="Genero" Type="Self.Genero" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genero">
+              <PropertyRef Name="id_Genero" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="id_Genero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Resennia__id_Cli__3C69FB99">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Resennia" Type="Self.Resennia" Multiplicity="*" />
           <ReferentialConstraint>
@@ -254,7 +299,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Reserva__id_Clie__33D4B598">
+        <Association Name="FK__Reserva__id_Clie__36B12243">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
           <ReferentialConstraint>
@@ -266,7 +311,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Reserva__id_Empl__34C8D9D1">
+        <Association Name="FK__Reserva__id_Empl__37A5467C">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
           <ReferentialConstraint>
@@ -278,7 +323,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Reserva__id_Serv__35BCFE0A">
+        <Association Name="FK__Reserva__id_Serv__38996AB5">
           <End Role="Servicio" Type="Self.Servicio" Multiplicity="1" />
           <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
           <ReferentialConstraint>
@@ -290,7 +335,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Usuario__id_Rol___2B3F6F97">
+        <Association Name="FK__Usuario__id_Rol___2D27B809">
           <End Role="Rol_Usuario" Type="Self.Rol_Usuario" Multiplicity="1" />
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
           <ReferentialConstraint>
@@ -302,7 +347,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Servicio__id_Tip__30F848ED">
+        <Association Name="FK__Servicio__id_Tip__33D4B598">
           <End Role="Tipo_Servicio" Type="Self.Tipo_Servicio" Multiplicity="1" />
           <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -314,34 +359,39 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="db_a7c3cb_hibicuswebEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="db_a7c3cb_hibicuswebEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Generoes" EntityType="Self.Genero" />
           <EntitySet Name="Resennias" EntityType="Self.Resennia" />
           <EntitySet Name="Reservas" EntityType="Self.Reserva" />
           <EntitySet Name="Rol_Usuario" EntityType="Self.Rol_Usuario" />
           <EntitySet Name="Servicios" EntityType="Self.Servicio" />
           <EntitySet Name="Tipo_Servicio" EntityType="Self.Tipo_Servicio" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
-          <AssociationSet Name="FK__Resennia__id_Cli__398D8EEE" Association="Self.FK__Resennia__id_Cli__398D8EEE">
+          <AssociationSet Name="FK__Usuario__id_Gene__2E1BDC42" Association="Self.FK__Usuario__id_Gene__2E1BDC42">
+            <End Role="Genero" EntitySet="Generoes" />
+            <End Role="Usuario" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Resennia__id_Cli__3C69FB99" Association="Self.FK__Resennia__id_Cli__3C69FB99">
             <End Role="Usuario" EntitySet="Usuarios" />
             <End Role="Resennia" EntitySet="Resennias" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reserva__id_Clie__33D4B598" Association="Self.FK__Reserva__id_Clie__33D4B598">
+          <AssociationSet Name="FK__Reserva__id_Clie__36B12243" Association="Self.FK__Reserva__id_Clie__36B12243">
             <End Role="Usuario" EntitySet="Usuarios" />
             <End Role="Reserva" EntitySet="Reservas" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reserva__id_Empl__34C8D9D1" Association="Self.FK__Reserva__id_Empl__34C8D9D1">
+          <AssociationSet Name="FK__Reserva__id_Empl__37A5467C" Association="Self.FK__Reserva__id_Empl__37A5467C">
             <End Role="Usuario" EntitySet="Usuarios" />
             <End Role="Reserva" EntitySet="Reservas" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reserva__id_Serv__35BCFE0A" Association="Self.FK__Reserva__id_Serv__35BCFE0A">
+          <AssociationSet Name="FK__Reserva__id_Serv__38996AB5" Association="Self.FK__Reserva__id_Serv__38996AB5">
             <End Role="Servicio" EntitySet="Servicios" />
             <End Role="Reserva" EntitySet="Reservas" />
           </AssociationSet>
-          <AssociationSet Name="FK__Usuario__id_Rol___2B3F6F97" Association="Self.FK__Usuario__id_Rol___2B3F6F97">
+          <AssociationSet Name="FK__Usuario__id_Rol___2D27B809" Association="Self.FK__Usuario__id_Rol___2D27B809">
             <End Role="Rol_Usuario" EntitySet="Rol_Usuario" />
             <End Role="Usuario" EntitySet="Usuarios" />
           </AssociationSet>
-          <AssociationSet Name="FK__Servicio__id_Tip__30F848ED" Association="Self.FK__Servicio__id_Tip__30F848ED">
+          <AssociationSet Name="FK__Servicio__id_Tip__33D4B598" Association="Self.FK__Servicio__id_Tip__33D4B598">
             <End Role="Tipo_Servicio" EntitySet="Tipo_Servicio" />
             <End Role="Servicio" EntitySet="Servicios" />
           </AssociationSet>
@@ -351,7 +401,15 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="db_a7c3cb_hibicuswebModelStoreContainer" CdmEntityContainer="db_a7c3cb_hibicuswebEntities">
+        <EntityContainerMapping StorageEntityContainer="db_a7c3cb_hibicuswebModelStoreContainer" CdmEntityContainer="db_a7c3cb_hibicuswebEntities2">
+          <EntitySetMapping Name="Generoes">
+            <EntityTypeMapping TypeName="db_a7c3cb_hibicuswebModel.Genero">
+              <MappingFragment StoreEntitySet="Genero">
+                <ScalarProperty Name="id_Genero" ColumnName="id_Genero" />
+                <ScalarProperty Name="Genero1" ColumnName="Genero" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Resennias">
             <EntityTypeMapping TypeName="db_a7c3cb_hibicuswebModel.Resennia">
               <MappingFragment StoreEntitySet="Resennia">
@@ -412,7 +470,7 @@
                 <ScalarProperty Name="correo" ColumnName="correo" />
                 <ScalarProperty Name="contrasennia" ColumnName="contrasennia" />
                 <ScalarProperty Name="telefono" ColumnName="telefono" />
-                <ScalarProperty Name="genero" ColumnName="genero" />
+                <ScalarProperty Name="id_Genero" ColumnName="id_Genero" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

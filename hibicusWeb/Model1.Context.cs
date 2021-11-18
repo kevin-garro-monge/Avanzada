@@ -13,10 +13,10 @@ namespace hibicusWeb
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class db_a7c3cb_hibicuswebEntities : DbContext
+    public partial class db_a7c3cb_hibicuswebEntities2 : DbContext
     {
-        public db_a7c3cb_hibicuswebEntities()
-            : base("name=db_a7c3cb_hibicuswebEntities")
+        public db_a7c3cb_hibicuswebEntities2()
+            : base("name=db_a7c3cb_hibicuswebEntities2")
         {
         }
     
@@ -25,6 +25,7 @@ namespace hibicusWeb
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Genero> Generoes { get; set; }
         public virtual DbSet<Resennia> Resennias { get; set; }
         public virtual DbSet<Reserva> Reservas { get; set; }
         public virtual DbSet<Rol_Usuario> Rol_Usuario { get; set; }
