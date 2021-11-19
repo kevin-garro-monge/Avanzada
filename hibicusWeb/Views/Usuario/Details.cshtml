@@ -12,7 +12,7 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.nombre)
+           <b>Nombre</b>
         </dt>
 
         <dd>
@@ -20,7 +20,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.apellido1)
+            <b>Primer apellido</b>
         </dt>
 
         <dd>
@@ -28,7 +28,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.apellido2)
+            <b>Segundo apellido</b>
         </dt>
 
         <dd>
@@ -36,7 +36,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.cedula_Usuario)
+           <b>Cedula</b>
         </dt>
 
         <dd>
@@ -44,7 +44,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.correo)
+            <b>Correo electronico</b>
         </dt>
 
         <dd>
@@ -52,7 +52,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.contrasennia)
+            <b>Contraseña</b>
         </dt>
 
         <dd>
@@ -60,7 +60,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.telefono)
+             <b>Telefono</b>
         </dt>
 
         <dd>
@@ -68,7 +68,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Genero.Genero1)
+            <b>Genero</b>
         </dt>
 
         <dd>
@@ -76,7 +76,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Rol_Usuario.tipo_Rol)
+             <b>Rol</b>
         </dt>
 
         <dd>
@@ -86,6 +86,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id_Usuario }) |
-    @Html.ActionLink("Back to List", "Index")
+    <a class="btn btn-danger" href="@Url.Action("Edit", "Usuarios", new { id = Model.id_Usuario })">Editar</a> 
+    <a class="btn btn-info" href="@Url.Action("Index")">Volver atras</a>
 </p>

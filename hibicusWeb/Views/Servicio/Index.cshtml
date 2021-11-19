@@ -16,9 +16,7 @@
     @* Card *@
     <div class="card">
         <div class="add">
-            <button class="btn btn-info">
-                @Html.ActionLink("Detalles", "Details", new { id = item.id_Servicio })
-            </button>
+            <a class="btn btn-info btn-mid" href="@Url.Action("Details", new { id = item.id_Servicio })">Detalles</a>
         </div>
 
         <div class="container">
@@ -26,13 +24,8 @@
             <p>@Html.DisplayFor(modelItem => item.descripcion)</p>
             <p>@Html.DisplayFor(modelItem => item.precio)</p>
 
-            <button class="btn btn-warning">
-                @Html.ActionLink("Editar", "Edit", new { id = item.id_Servicio })
-            </button>
-
-            <button class="btn btn-danger">
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.id_Servicio })
-            </button>
+            <a class="btn btn-warning btn-mid" href="@Url.Action("Edit", new { id = item.id_Servicio })">Editar</a>
+            <a class="btn btn-danger btn-mid" href="@Url.Action("Delete", new { id = item.id_Servicio })">Eliminar</a>
         </div>
     </div>
     <br />
