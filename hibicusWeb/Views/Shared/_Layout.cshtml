@@ -9,6 +9,7 @@
 
     Styles
     <link href="~/Content/estilos.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/cardStyle.css" rel="stylesheet" type="text/css" />
 
     <!-- Boxicons CDN Link -->
     <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
@@ -18,7 +19,7 @@
     <div class="sidebar">
         <div class="logo_content">
             <div class="logo">
-                <i class="bx bxl-c-plus-plus"></i>
+                <i class='bx bxs-florist'></i>
                 <div class="logo_name">Hibiscus</div>
             </div>
             <i class="bx bx-menu" id="btn"></i>
@@ -32,56 +33,56 @@
             </li>
             <li>
                 <a href="@Url.Action("Index", "Home")">
-                    <i class="bx bx-grid-alt"></i>
+                    <i class='bx bxs-home'></i>
                     <span class="links_name">Home</span>
                 </a>
                 <span class="tooltip">Home</span>
             </li>
             <li>
                 <a href="@Url.Action("About", "Home")">
-                    <i class="bx bx-user"></i>
+                    <i class='bx bxs-detail'></i>
                     <span class="links_name">About</span>
                 </a>
                 <span class="tooltip">About</span>
             </li>
             <li>
                 <a href="@Url.Action("Contact", "Home")">
-                    <i class="bx bx-chat"></i>
+                    <i class='bx bxs-contact'></i>
                     <span class="links_name">Contact</span>
                 </a>
                 <span class="tooltip">Contact</span>
             </li>
             <li>
                 <a href="@Url.Action("Index", "Usuario")">
-                    <i class="bx bx-pie-chart-alt-2"></i>
+                    <i class='bx bx-user'></i>
                     <span class="links_name">Usuarios</span>
                 </a>
                 <span class="tooltip">Usuarios</span>
             </li>
             <li>
                 <a href="@Url.Action("Index", "Resennia")">
-                    <i class="bx bx-folder"></i>
+                    <i class='bx bx-comment-dots'></i>
                     <span class="links_name">Reseñas</span>
                 </a>
                 <span class="tooltip">Reseñas</span>
             </li>
             <li>
                 <a href="@Url.Action("Index", "Reserva")">
-                    <i class="bx bx-cart-alt"></i>
+                    <i class='bx bx-book-reader'></i>
                     <span class="links_name">Reservas</span>
                 </a>
                 <span class="tooltip">Reservas</span>
             </li>
             <li>
                 <a href="@Url.Action("Index", "Servicio")">
-                    <i class="bx bx-heart"></i>
+                    <i class='bx bx-briefcase-alt-2'></i>
                     <span class="links_name">Servicios</span>
                 </a>
                 <span class="tooltip">Servicios</span>
             </li>
             <li>
-                <a href="@Url.Action("Index", "Genero")">
-                    <i class="bx bx-cog"></i>
+                <a href="@Url.Action("Index", "Tipo_Servicio")">
+                    <i class='bx bx-test-tube'></i>
                     <span class="links_name">Testing</span>
                 </a>
                 <span class="tooltip">Testing</span>
@@ -104,10 +105,6 @@
 
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
 
     <script>
