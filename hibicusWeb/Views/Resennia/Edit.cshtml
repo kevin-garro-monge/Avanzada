@@ -5,15 +5,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2>Editar el Reseña: @Html.DisplayFor(model => model.Usuario.nombre) @Html.DisplayFor(model => model.Usuario.apellido1)</h2>
 
-
+@*Dropdown o estrellas*@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-    <h4>Resennia</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.id_Resenia)
@@ -158,14 +157,14 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
+            <input type="submit" value="Guardar" class="btn btn-success" />
         </div>
     </div>
 </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <a class="btn btn-info" href="@Url.Action("Index")">Volver atras</a>
 </div>
 
 @section Scripts {

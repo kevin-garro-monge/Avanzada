@@ -19,16 +19,20 @@
         box-shadow: 0 8px 16px 0 rgba(0,0.2,0.2,0.2);
     }
 
-.card .container {
-    padding: 2px 16px;
-}
+    .card .container {
+        padding: 2px 16px;
+    }
+
+    .card .content {
+        overflow-wrap: break-word;
+    }
 
 .add {
     float: left;
     width: 15%;
     height: 17vh;
     margin-right: 2%;
-    text-align:center;
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -132,17 +132,11 @@
 
             <div class="container-fluid">
 
-                <button class="btn btn-info">
-                    @Html.ActionLink("Detalles", "Details", new { id = item.id_Resenia })
-                </button>
+                <a class="btn btn-info btn-sm" href="@Url.Action("Details", new { id = item.id_Resenia })">Detalles</a>
 
-                <button class="btn btn-warning">
-                    @Html.ActionLink("Editar", "Edit", new { id = item.id_Resenia })
-                </button>
+                <a class="btn btn-warning btn-sm" href="@Url.Action("Edit", new { id = item.id_Resenia })">Editar</a>
 
-                <button class="btn btn-danger">
-                    @Html.ActionLink("Eliminar", "Delete", new { id = item.id_Resenia })
-                </button>
+                <a class="btn btn-danger btn-sm" href="@Url.Action("Delete", new { id = item.id_Resenia })">Eliminar</a>
 
             </div>
 
