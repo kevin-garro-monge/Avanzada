@@ -1,52 +1,157 @@
 ﻿@model IEnumerable<hibicusWeb.Resennia>
 
+
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Menú de reseñas";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Menú de reseñas</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.cotenido)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.puntuacion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fecha)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Usuario.nombre)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.cotenido)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.puntuacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fecha)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Usuario.nombre)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id_Resenia }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id_Resenia }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id_Resenia })
-        </td>
-    </tr>
+@foreach (var item in Model)
+{
+
+    <div class="card container-fluid" style="background-color:white">
+
+        <div class="container-fluid">
+            <h4>
+                <b>@Html.DisplayFor(modelItem => item.Usuario.nombre)</b>
+                <b>@Html.DisplayFor(modelItem => item.Usuario.apellido1)</b>
+                -
+                @Html.DisplayFor(modelItem => item.fecha)
+            </h4>
+
+            @{
+
+                int puntuacion = Convert.ToInt32(@Html.DisplayFor(modelItem => item.puntuacion).ToString());
+                int idResennia = Convert.ToInt32(@Html.DisplayFor(modelItem => item.id_Resenia).ToString());
+
+            }
+
+            @*Sistema de rating*@
+
+            <form>
+                <fieldset class="starability-basic">
+
+                    @if (puntuacion == 1)
+                    {
+
+                        <input type="radio" name="rating" value="1" checked />
+                        <label title="Insatisfecho">1 Estrella</label>
+
+                    }
+                    else
+                    {
+
+                        <input type="radio" name="rating" value="1" />
+                        <label title="Insatisfecho">1 Estrella</label>
+
+                    }
+
+                    @if (puntuacion == 2)
+                    {
+
+
+                        <input type="radio" name="rating" value="2" checked />
+                        <label title="Poco satisfecho">2 Estrellas</label>
+
+                    }
+                    else
+                    {
+
+                        <input type="radio" name="rating" value="2" />
+                        <label title="Poco satisfecho">2 Estrellas</label>
+
+                    }
+
+                    @if (puntuacion == 3)
+                    {
+
+                        <input type="radio" name="rating" value="3" checked />
+                        <label title="Satisfecho">3 Estrellas</label>
+
+                    }
+                    else
+                    {
+
+                        <input type="radio" name="rating" value="3" />
+                        <label title="Satisfecho">3 Estrellas</label>
+
+                    }
+
+
+                    @if (puntuacion == 4)
+                    {
+
+
+                        <input type="radio" name="rating" value="4" checked />
+                        <label title="Muy satisfecho">4 Estrellas</label>
+
+                    }
+                    else
+                    {
+
+                        <input type="radio" name="rating" value="4" />
+                        <label title="Muy satisfecho">4 Estrellas</label>
+
+                    }
+
+
+                    @if (puntuacion == 5)
+                    {
+
+
+
+                        <input type="radio" name="rating" value="5" checked />
+                        <label title="Complacido">5 Estrellas</label>
+
+                    }
+                    else
+                    {
+
+                        <input type="radio" name="rating" value="5" />
+                        <label title="Complacido">5 Estrellas</label>
+
+                    }
+
+                </fieldset>
+            </form>
+
+            @*Fin del sistema de rating.*@
+
+            <p class="container-fluid" style="color:black;font-size:large">
+                @Html.DisplayFor(modelItem => item.cotenido)
+            </p>
+
+            <br />
+
+            <div class="container-fluid">
+
+                <button class="btn btn-info">
+                    @Html.ActionLink("Detalles", "Details", new { id = item.id_Resenia })
+                </button>
+
+                <button class="btn btn-warning">
+                    @Html.ActionLink("Editar", "Edit", new { id = item.id_Resenia })
+                </button>
+
+                <button class="btn btn-danger">
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.id_Resenia })
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <br>
+    <br>
+
 }
 
-</table>
