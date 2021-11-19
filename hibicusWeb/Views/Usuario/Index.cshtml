@@ -7,39 +7,42 @@
 
 <h2>Usuario</h2>
 
+@*Hacer columnas mas grandes???*@
 <div>
     <a href="@Url.Action("Create")" class="btn btn-primary">Crear Usuario</a>
 </div>
-<table class="table">
+<table class="table table-hover">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.nombre)
+            Nombre
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.apellido1)
+            Primer Apellido
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.apellido2)
+            Segundo Apellido
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.cedula_Usuario)
+            Cédula
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.correo)
+            Correo
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.contrasennia)
+            Contraseña
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.telefono)
+            Teléfono
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Genero.Genero1)
+            Genero
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Rol_Usuario.tipo_Rol)
+            Role
         </th>
-        <th></th>
+        <th>
+            Acciones
+        </th>
     </tr>
 
     @foreach (var item in Model)
