@@ -4,40 +4,63 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Details</h2>
-
-<div>
-    <h4>Servicio</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.descripcion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.descripcion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.precio)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.precio)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Tipo_Servicio.descripcion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Tipo_Servicio.descripcion)
-        </dd>
-
-    </dl>
+<div style="margin-bottom: 15px;">
+    <b>
+        <h2>Detalles del Servicio</h2>
+    </b>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id_Servicio }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div class="row">
+
+
+    <table class="table card" style="border-radius: 8px;">
+
+        <tr >
+            <td>
+                <b>
+                    <h4>Descripción:</h4>
+                </b>
+            </td>
+            <td>
+              <h4>@Html.DisplayFor(model => model.descripcion)</h4> 
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>
+                    <h4>Precio:</h4>
+                </b>
+            </td>
+            <td>
+               <h4>@Html.DisplayFor(model => model.precio)</h4> 
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <b>
+                    <h4>Tipo de Servicio:</h4>
+                </b>
+            </td>
+            <td>
+               <h4> @Html.DisplayFor(model => model.Tipo_Servicio.descripcion)</h4>
+            </td>
+        </tr>
+        
+
+    </table>
+</div>
+        <div style="margin-top: 15px;">
+            <p>
+<tr>
+           
+                
+                    <a class="btn btn-warning"
+                        href="@Url.Action("Edit", "Servicio", new { id = Model.id_Servicio})">Editar</a>
+              
+     
+                <a class="btn btn-info" href="@Url.Action("Index", "Servicio")">Volver a servicios</a>
+            </p>
+        </div>
+
+    </div>
+</div>

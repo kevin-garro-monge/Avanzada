@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Detalles de usuario</h2>
 
 <div>
-    <h4>Usuario</h4>
+   
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -86,6 +86,6 @@
     </dl>
 </div>
 <p>
-    <a class="btn btn-danger" href="@Url.Action("Edit", "Usuarios", new { id = Model.id_Usuario })">Editar</a> 
+    <a class="btn btn-warning" href="@Url.Action("Edit", "Usuarios", new { id = Model.id_Usuario })">Editar</a> 
     <a class="btn btn-info" href="@Url.Action("Index")">Volver atras</a>
 </p>

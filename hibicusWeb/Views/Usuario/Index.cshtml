@@ -8,7 +8,7 @@
 <h2>Usuario</h2>
 
 @*Hacer columnas mas grandes???*@
-<div>
+<div style="margin-bottom: 15px;">
     <a href="@Url.Action("Create")" class="btn btn-primary">Crear Usuario</a>
 </div>
 <table class="table table-hover">
@@ -40,7 +40,7 @@
         <th>
             Role
         </th>
-        <th>
+        <th style="width: 15px;">
             Acciones
         </th>
     </tr>
@@ -75,15 +75,21 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Rol_Usuario.tipo_Rol)
             </td>
+
+
             <td>
+
+
+
                 <a class="btn btn-info btn-sm" href="@Url.Action("Details", new { id = item.id_Usuario })">Detalles</a>
-                 
-                </td>
-                 <td>
+            </td>
+            <td>
                 <a class="btn btn-warning btn-sm" href="@Url.Action("Edit", new { id = item.id_Usuario })">Editar</a>
-                </td>
-                 <td>
+            </td>
+            <td>
                 <a class="btn btn-danger btn-sm" href="@Url.Action("Delete", new { id = item.id_Usuario })">Eliminar</a>
+
+
             </td>
         </tr>
     }

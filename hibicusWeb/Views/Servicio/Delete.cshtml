@@ -5,12 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
+<b><h2>¿Estás seguro de que queires eliminar el servicio de: @Html.DisplayFor(model => model.descripcion) ?</h2></b>
 
-<h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Servicio</h4>
     <hr />
+    <table class="table card" style="border-radius: 8px;">
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.descripcion)
@@ -37,13 +36,15 @@
         </dd>
 
     </dl>
+    </table>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <a class="btn btn-success" href="@Url.Action("Index", "Servicio")">Cancelar</a>
+            <a class="btn btn-danger" href="@Url.Action("Delete", "Servicio", new { id = Model.id_Servicio})">Eliminar</a>
+          
         </div>
     }
 </div>
