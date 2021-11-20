@@ -5,48 +5,54 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<b>
+    <h2>Reservas</h2>
+</b>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.fecha_Hora)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Usuario.nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Usuario1.nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Servicio.descripcion)
-        </th>
-        <th></th>
-    </tr>
+    <a href="@Url.Action("Create")" class="btn btn-primary">Crear Servicio</a>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.fecha_Hora)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Usuario.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Usuario1.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Servicio.descripcion)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id_Reserva }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id_Reserva }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id_Reserva })
-        </td>
-    </tr>
-}
+</p>
+<table class="table card" style="border-radius: 8px;">
+    <thead>
+        <tr>
+            <th>Fecha y hora</th>
+            <th>Cliente</th>
+            <th>Empleado</th>
+            <th style="width: 40%;">Servicio</th>
+            <th colspan="3" style="text-align: center;">Acciones</th>
+        </tr>
+    </thead>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha_Hora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario1.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Servicio.descripcion)
+            </td>
+            <td>
+                <a class="btn btn-info"href="@Url.Action("Details", new { id = item.id_Reserva})">Detalles</a>
+                
+            </td>
+            <td>
+                 <a class="btn btn-warning"href="@Url.Action("Edit", new { id = item.id_Reserva})">Editar</a>
+             
+            </td>
+            <td>
+                <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.id_Reserva})">Eliminar</a>
+               
+            </td>
+        </tr>
+    }
 
 </table>

@@ -7,85 +7,78 @@
 
 <h2>Detalles de usuario</h2>
 
-<div>
-   
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-           <b>Nombre</b>
-        </dt>
+<div class="row">
+    <table class="table table-striped card" style="border-radius: 8px;">
+        <tr>
+            <th>
+                <h4>Rol:</h4>
+            </th>
+            <td>
+                <h4> @Html.DisplayFor(model => model.Rol_Usuario.tipo_Rol)</h4>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <h4>Nombre:</h4>
+            </th>
+            <td>
+                <h4> @Html.DisplayFor(model => model.nombre)</h4>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <h4>Primer Apellido:</h4>
+            </th>
+            <td>
+                <h4> @Html.DisplayFor(model => model.apellido1)</h4>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <h4>Segundo Apellido:</h4>
+            </th>
+            <td>
+                <h4> @Html.DisplayFor(model => model.apellido2)</h4>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <h4>Cédula</h4>
+            </th>
+            <td>
+                <h4> @Html.DisplayFor(model => model.cedula_Usuario)</h4>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <h4>Correo:</h4>
+            </th>
+            <td>
+                <h4> @Html.DisplayFor(model => model.correo)</h4>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <h4>Teléfono:</h4>
+            </th>
+            <td>
+                <h4> @Html.DisplayFor(model => model.telefono)</h4>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <h4>Genero:</h4>
+            </th>
+            <td>
+                <h4> @Html.DisplayFor(model => model.Genero.Genero1)</h4>
+            </td>
+        </tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.nombre)
-        </dd>
 
-        <dt>
-            <b>Primer apellido</b>
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.apellido1)
-        </dd>
-
-        <dt>
-            <b>Segundo apellido</b>
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.apellido2)
-        </dd>
-
-        <dt>
-           <b>Cedula</b>
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.cedula_Usuario)
-        </dd>
-
-        <dt>
-            <b>Correo electronico</b>
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.correo)
-        </dd>
-
-        <dt>
-            <b>Contraseña</b>
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.contrasennia)
-        </dd>
-
-        <dt>
-             <b>Telefono</b>
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.telefono)
-        </dd>
-
-        <dt>
-            <b>Genero</b>
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Genero.Genero1)
-        </dd>
-
-        <dt>
-             <b>Rol</b>
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Rol_Usuario.tipo_Rol)
-        </dd>
-
-    </dl>
+    </table>
 </div>
 <p>
-    <a class="btn btn-warning" href="@Url.Action("Edit", "Usuarios", new { id = Model.id_Usuario })">Editar</a> 
+    <a class="btn btn-warning" href="@Url.Action("Edit", "Usuarios", new { id = Model.id_Usuario })">Editar</a>
     <a class="btn btn-info" href="@Url.Action("Index")">Volver atras</a>
 </p>
