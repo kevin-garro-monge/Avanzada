@@ -20,12 +20,17 @@
         box-shadow: 0 8px 16px 0 rgba(0,0.2,0.2,0.2);
     }
 
-    .card .container {
-        padding: 2px 16px;
-    }
+.cardimg {
+    position: fixed;
+    right: 400px;
+}
 
-    .card .content {
-        overflow-wrap: break-word;
+    .cardimg .img {
+        height: 542px;
+        width: 558px;
+        object-fit: cover;
+        border-radius: 30px;
+        display: flex;
     }
 
 .add {
