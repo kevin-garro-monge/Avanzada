@@ -189,7 +189,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Contact1.png" />
+    <Content Include="Images\Home1.png" />
     <Content Include="Images\IMG_About.png" />
+    <Content Include="Images\Instagram-Logo.png" />
     <Content Include="Images\Map.png" />
     <Content Include="Images\Thunder.png" />
     <Content Include="Images\Unisex.png" />
