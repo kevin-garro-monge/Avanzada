@@ -1,0 +1,51 @@
+﻿@model webHibiscus.Reserva
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Reserva</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_Hora)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_Hora)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUser1.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser1.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Servicio.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Servicio.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_Reserva }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

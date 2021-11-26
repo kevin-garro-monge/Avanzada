@@ -1,0 +1,51 @@
+﻿@model webHibiscus.Servicio
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<b><h2>¿Estás seguro de que queires eliminar el servicio de: @Html.DisplayFor(model => model.descripcion) ?</h2></b>
+
+<div>
+    <hr />
+    <table class="table card" style="border-radius: 8px;">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.descripcion)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.descripcion)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.precio)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.precio)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.nombre)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.nombre)
+            </dd>
+
+        </dl>
+    </table>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <a class="btn btn-success" href="@Url.Action("Index", "Servicio")">Cancelar</a>
+            <a class="btn btn-danger" href="@Url.Action("Delete", "Servicio", new { id = Model.id_Servicio})">Eliminar</a>
+
+        </div>
+    }
+</div>

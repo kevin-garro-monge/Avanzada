@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    Styles
+    <link href="~/Content/estilos.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/cardStyle.css" rel="stylesheet" type="text/css" />
+    <link href="~/Starability/starability-all.min.css" rel="stylesheet" />
+
+    <!-- Boxicons CDN Link -->
+    <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+          rel="stylesheet" />
+
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo_content">
+            <div class="logo">
+                <i class='bx bxs-florist'></i>
+                <div class="logo_name">Hibiscus</div>
+            </div>
+            <i class="bx bx-menu" id="btn"></i>
+        </div>
+        @*List of options*@
+        <ul class="nav_list">
+
+            @* No BORRAR HASTA LA ENTREGA FINAL *@
+
+            @*<li>
+                    <i class="bx bx-search"></i>
+                    <input type="text" placeholder="Buscar..." />
+                    <span class="tooltip">Buscar</span>
+                </li>*@
+            <li>
+                <a href="@Url.Action("Index", "Home")">
+                    <i class='bx bxs-home'></i>
+                    <span class="links_name">Home</span>
+                </a>
+                <span class="tooltip">Home</span>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "AspNetUsers")">
+                    <i class='bx bx-user'></i>
+                    <span class="links_name">Usuarios</span>
+                </a>
+                <span class="tooltip">Usuarios</span>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "Resennia")">
+                    <i class='bx bx-comment-dots'></i>
+                    <span class="links_name">Reseñas</span>
+                </a>
+                <span class="tooltip">Reseñas</span>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "Reserva")">
+                    <i class='bx bx-book-content'></i>
+                    <span class="links_name">Reservas</span>
+                </a>
+                <span class="tooltip">Reservas</span>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "Servicio")">
+                    <i class='bx bx-briefcase-alt-2'></i>
+                    <span class="links_name">Servicios</span>
+                </a>
+                <span class="tooltip">Servicios</span>
+            </li>
+            <li>
+                <a href="@Url.Action("About", "Home")">
+                    <i class='bx bx-detail'></i>
+                    <span class="links_name">Accerca</span>
+                </a>
+                <span class="tooltip">Accerca</span>
+            </li>
+            <li>
+                <a href="@Url.Action("Contact", "Home")">
+                    <i class='bx bx-phone'></i>
+                    <span class="links_name">Contacto</span>
+                </a>
+                <span class="tooltip">Contacto</span>
+            </li>
+
+            @* No BORRAR HASTA LA ENTREGA FINAL *@
+
+            <li>
+                    <a href="@Url.Action("Index", "AspNetRole")">
+                        <i class='bx bx-block'></i>
+                        <span class="links_name">Testing</span>
+                    </a>
+                    <span class="tooltip">Testing</span>
+                </li>
+        </ul>
+        @*User part*@
+        <div class="profile_content">
+            <div class="profile">
+                <div class="profile_details">
+                    <div class="name_job">
+                        <div class="name">@Html.Partial("_LoginPartial")</div>
+                    </div>
+                </div>
+                <i class="bx bx-log-out" id="log_out"></i>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    <script>
+        let btn = document.querySelector("#btn");
+        let sidebar = document.querySelector(".sidebar");
+        let searchBtn = document.querySelector(".bx-search");
+
+        btn.onclick = function () {
+            sidebar.classList.toggle("active");
+        };
+        searchBtn.onclick = function () {
+            sidebar.classList.toggle("active");
+        };
+    </script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

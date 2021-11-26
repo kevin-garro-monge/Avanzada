@@ -1,0 +1,52 @@
+﻿@model IEnumerable<webHibiscus.Reserva>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_Hora)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AspNetUser1.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Servicio.nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha_Hora)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AspNetUser1.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Servicio.nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_Reserva }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_Reserva }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_Reserva })
+        </td>
+    </tr>
+}
+
+</table>
