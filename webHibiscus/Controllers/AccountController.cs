@@ -163,7 +163,7 @@ namespace webHibiscus.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    // No registra si no viene aqui, porque??????
+                    // No registra si no vuelve al Index, porque??????
                     return RedirectToAction("Index", "Home");
                     //return RedirectToAction("LoginEdit", "AspNetUsers", new { id = user.Id });
                 }
