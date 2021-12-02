@@ -1,13 +1,12 @@
 ﻿@model webHibiscus.Resennia
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Editar reseña";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Editar el Reseña: @Html.DisplayFor(model => model.AspNetUser.nombre) @Html.DisplayFor(model => model.AspNetUser.apellido1)</h2>
+<h2>Editar la Reseña de: @Html.DisplayFor(model => model.AspNetUser.nombre) @Html.DisplayFor(model => model.AspNetUser.apellido1)</h2>
 
-@*Dropdown o estrellas*@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -18,9 +17,9 @@
         @Html.HiddenFor(model => model.id_Resenia)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.id_Cliente, "ID del Cliente", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.id_Cliente, "ID del Cliente", htmlAttributes: new { @class = "control-label col-md-2",@hidden="true" })
             <div class="col-md-10">
-                @Html.EditorFor(Model => Model.id_Cliente, new { htmlAttributes = new { @class = "form-control", ReadOnly = true } })
+                @Html.HiddenFor(Model => Model.id_Cliente, new { htmlAttributes = new { @class = "form-control", ReadOnly = true } })
                 @Html.ValidationMessageFor(model => model.id_Cliente, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -46,116 +45,31 @@
             @Html.LabelFor(model => model.puntuacion, "Puntuacion", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
 
-                @{
+                <fieldset class="starability-basic">
 
-                    int puntuacionActual = Convert.ToInt32(@Html.DisplayFor(Model => Model.puntuacion).ToString());
+                    @for (int i = 1; i <= 5; i++)
+                    {
 
-                }
-
-                <form>
-                    <fieldset class="starability-basic">
-
-                        @if (puntuacionActual == 1)
+                        if (Model.puntuacion == i)
                         {
 
-                            <input type="radio" id="first-rate1" name="rating" value="1" checked onclick="obtenerValorPuntuacion()" />
-                            <label for="first-rate1" title="Terrible">1 star</label>
+                            @Html.RadioButtonFor(model => model.puntuacion, i, new { @type = "radio", @id = "first-rate" + i, @name = "rating", @checked = "true" })
+                            @Html.Label("first-rate" + i)
+
 
                         }
                         else
                         {
 
-                            <input type="radio" id="first-rate1" name="rating" value="1" onclick="obtenerValorPuntuacion()" />
-                            <label for="first-rate1" title="Terrible">1 star</label>
+                            @Html.RadioButtonFor(model => model.puntuacion, i, new { @type = "radio", @id = "first-rate" + i, @name = "rating" })
+                            @Html.Label("first-rate" + i)
 
-                        }
+                        } //Fin del else.
 
-                        @if (puntuacionActual == 2)
-                        {
+                        //Fin del for.
+                    }
 
-                            <input type="radio" id="first-rate2" name="rating" value="2" checked onclick="obtenerValorPuntuacion()" />
-                            <label for="first-rate2" title="Not good">2 stars</label>
-
-                        }
-                        else
-                        {
-                            <input type="radio" id="first-rate2" name="rating" value="2" onclick="obtenerValorPuntuacion()" />
-                            <label for="first-rate2" title="Not good">2 stars</label>
-
-                        }
-
-                        @if (puntuacionActual == 3)
-                        {
-
-                            <input type="radio" id="first-rate3" name="rating" value="3" checked onclick="obtenerValorPuntuacion()" />
-                            <label for="first-rate3" title="Average">3 stars</label>
-
-                        }
-                        else
-                        {
-
-                            <input type="radio" id="first-rate3" name="rating" value="3" onclick="obtenerValorPuntuacion()" />
-                            <label for="first-rate3" title="Average">3 stars</label>
-
-                        }
-
-
-                        @if (puntuacionActual == 4)
-                        {
-
-
-                            <input type="radio" id="first-rate4" name="rating" value="4" checked onclick="obtenerValorPuntuacion()" />
-                            <label for="first-rate4" title="Very good">4 stars</label>
-
-                        }
-                        else
-                        {
-
-                            <input type="radio" id="first-rate4" name="rating" value="4" onclick="obtenerValorPuntuacion()" />
-                            <label for="first-rate4" title="Very good">4 stars</label>
-
-                        }
-
-
-                        @if (puntuacionActual == 5)
-                        {
-
-
-                            <input type="radio" id="first-rate5" name="rating" value="5" checked onclick="obtenerValorPuntuacion()" />
-                            <label for="first-rate5" title="Excellent">5 star</label>
-
-                        }
-                        else
-                        {
-
-                            <input type="radio" id="first-rate5" name="rating" value="5" onclick="obtenerValorPuntuacion()" />
-                            <label for="first-rate5" title="Excellent">5 star</label>
-
-                        }
-
-                    </fieldset>
-
-                    <script>
-
-                        function obtenerValorPuntuacion() {
-
-                            var elemento = document.getElementsByName("rating");
-
-                            for (let iterador = 0; iterador < elemento.length; iterador++) {
-
-                                if (elemento[iterador].checked) {
-
-                                    alert(elemento[iterador].value);
-
-                                } //Fin del if.
-
-                            } //Fin del for.
-
-                        } //Fin.
-
-                    </script>
-
-                </form>
+                </fieldset>
 
             </div>
         </div>
@@ -163,7 +77,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.fecha, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.fecha, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.fecha, new { htmlAttributes = new { @class = "form-control", @type="date" } })
                 @Html.ValidationMessageFor(model => model.fecha, "", new { @class = "text-danger" })
             </div>
         </div>

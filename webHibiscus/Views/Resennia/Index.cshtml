@@ -24,7 +24,7 @@
                 <b>@Html.DisplayFor(modelItem => item.AspNetUser.nombre)</b>
                 <b>@Html.DisplayFor(modelItem => item.AspNetUser.apellido1)</b>
                 -
-                @Html.DisplayFor(modelItem => item.fecha)
+                @Html.ValueFor(modelItem => item.fecha, "{0:dd/MM/yyyy}")
             </h4>
 
             @{
@@ -39,85 +39,25 @@
             <form>
                 <fieldset class="starability-basic">
 
-                    @if (puntuacion == 1)
+                    @for (int i = 1; i <= 5; i++)
                     {
 
-                        <input type="radio" name="rating" value="1" checked />
-                        <label title="Insatisfecho">1 Estrella</label>
+                        if (i == item.puntuacion)
+                        {
 
-                    }
-                    else
-                    {
+                            <input type="radio" name="rating" value="@i" checked/>
+                            <label title="Insatisfecho">@i Estrella</label>
 
-                        <input type="radio" name="rating" value="1" />
-                        <label title="Insatisfecho">1 Estrella</label>
+                        }
+                        else
+                        {
 
-                    }
+                            <input type="radio" name="rating" value="@i" />
+                            <label title="Insatisfecho">@i Estrella</label>
 
-                    @if (puntuacion == 2)
-                    {
+                        } //Fin del if. 
 
-
-                        <input type="radio" name="rating" value="2" checked />
-                        <label title="Poco satisfecho">2 Estrellas</label>
-
-                    }
-                    else
-                    {
-
-                        <input type="radio" name="rating" value="2" />
-                        <label title="Poco satisfecho">2 Estrellas</label>
-
-                    }
-
-                    @if (puntuacion == 3)
-                    {
-
-                        <input type="radio" name="rating" value="3" checked />
-                        <label title="Satisfecho">3 Estrellas</label>
-
-                    }
-                    else
-                    {
-
-                        <input type="radio" name="rating" value="3" />
-                        <label title="Satisfecho">3 Estrellas</label>
-
-                    }
-
-
-                    @if (puntuacion == 4)
-                    {
-
-
-                        <input type="radio" name="rating" value="4" checked />
-                        <label title="Muy satisfecho">4 Estrellas</label>
-
-                    }
-                    else
-                    {
-
-                        <input type="radio" name="rating" value="4" />
-                        <label title="Muy satisfecho">4 Estrellas</label>
-
-                    }
-
-
-                    @if (puntuacion == 5)
-                    {
-
-
-
-                        <input type="radio" name="rating" value="5" checked />
-                        <label title="Complacido">5 Estrellas</label>
-
-                    }
-                    else
-                    {
-
-                        <input type="radio" name="rating" value="5" />
-                        <label title="Complacido">5 Estrellas</label>
-
+                        //Fin del for. 
                     }
 
                 </fieldset>

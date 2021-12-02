@@ -11,13 +11,17 @@ namespace webHibiscus
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Resennia
     {
         public int id_Resenia { get; set; }
         public string cotenido { get; set; }
         public string id_Cliente { get; set; }
         public int puntuacion { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
         public System.DateTime fecha { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
