@@ -9,10 +9,9 @@
 
 @*Porbar modal de Bootsstrap para agregar comments y JQUERY para puntuacion en estrellas*@
 <h2>Menú de reseñas</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<div class="" style="margin-bottom: 15px;">
+<a class="btn btn-primary btn-small" href="@Url.Action("Create")">Crear Usuario</a>
+</div>
 
 @foreach (var item in Model)
 {
@@ -45,7 +44,7 @@
                         if (i == item.puntuacion)
                         {
 
-                            <input type="radio" name="rating" value="@i" checked/>
+                            <input type="radio" name="rating" value="@i" checked />
                             <label title="Insatisfecho">@i Estrella</label>
 
                         }
@@ -55,9 +54,9 @@
                             <input type="radio" name="rating" value="@i" />
                             <label title="Insatisfecho">@i Estrella</label>
 
-                        } //Fin del if. 
+                        } //Fin del if.
 
-                        //Fin del for. 
+                        //Fin del for.
                     }
 
                 </fieldset>
@@ -83,4 +82,3 @@
         </div>
     </div>
 }
-

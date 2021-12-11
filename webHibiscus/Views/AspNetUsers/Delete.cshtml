@@ -5,13 +5,127 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h2>Esta seguro que desea eliminar el usuario: @Html.DisplayFor(model => model.UserName) ?</h2>
+
+
 <div>
-    <h4>AspNetUser</h4>
-    <hr />
-    <dl class="dl-horizontal">
+     <div class="row">
+
+<div class="card table-responsive" style="border-radius: 8px;">
+         <table class="table table-striped">
+            <tr>
+                <td>
+                    <b>
+                        <h4> Usuario </h4>
+                    </b>
+                </td>
+                <td>
+                    <h4>
+                        @Html.DisplayFor(model => model.UserName)
+                    </h4>
+            </tr>
+            <tr>
+                <td>
+                    <b>
+                        <h4>Nombre</h4>
+                    </b>
+                </td>
+                <td>
+                    <h4>
+                        @Html.DisplayFor(model => model.nombre)
+                    </h4>
+            </tr>
+            <tr>
+                <td>
+                    <b>
+                        <h4>Primer apellido</h4>
+                    </b>
+                </td>
+                <td>
+                    <h4>
+                        @Html.DisplayFor(model => model.apellido1)
+                    </h4>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>
+                        <h4>Segundo apellido</h4>
+                    </b>
+                </td>
+                <td>
+                    <h4>
+                        @Html.DisplayFor(model => model.apellido2)
+                    </h4>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <b>
+                        <h4>Cedula</h4>
+                    </b>
+                </td>
+                <td>
+                    <h4>
+                        @Html.DisplayFor(model => model.cedula_Usuario)
+                    </h4>
+            <tr>
+                <td>
+                    <b>
+                        <h4>Email</h4>
+                    </b>
+                </td>
+                <td>
+                    <h4>
+                                @Html.DisplayFor(model => model.Email)
+                    </h4>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>
+                        <h4>Telefono</h4>
+                    </b>
+                </td>
+                <td>
+                    <h4>
+                                @Html.DisplayFor(model => model.telefono)
+                    </h4>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <b>
+                        <h4>Genero</h4>
+                    </b>
+                </td>
+                <td>
+                    <h4>
+                                @Html.DisplayFor(model => model.Genero.Genero1)
+                    </h4>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>
+                        <h4>Accesos erroneos</h4>
+                    </b>
+                </td>
+                <td>
+                    <h4>
+                                @Html.DisplayFor(model => model.AccessFailedCount)
+                    </h4>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+</div>
+
+    @* <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Email)
         </dt>
@@ -148,14 +262,15 @@
             @Html.DisplayFor(model => model.Genero.Genero1)
         </dd>
 
-    </dl>
+    </dl> *@
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+              <a href="@Url.Action("Index", "AspNetUsers")" class="btn btn-info">Volver</a>
+            <input type="submit" value="Borrar" class="btn btn-danger" /> 
+           
         </div>
     }
 </div>

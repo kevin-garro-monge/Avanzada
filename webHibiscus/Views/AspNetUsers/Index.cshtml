@@ -5,72 +5,89 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.apellido1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.apellido2)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cedula_Usuario)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.telefono)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Genero.Genero1)
-        </th>
-        <th></th>
-    </tr>
+<div>
+    <div class="row">
+        <h2>Usuarios</h2>
+        @* <div class="col-md-12" style="text-align: right; margin-bottom: 15px;">
+            <a class="btn btn-primary btn-small" href="@Url.Action("Create")">Crear Usuario</a>
+        </div> *@
+    </div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.apellido1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.apellido2)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cedula_Usuario)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.telefono)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Genero.Genero1)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
 
-</table>
+    <div class="card table-responsive" style="border-radius: 8px;">
+        <table class="table table-striped">
+
+            <tr>
+                <th colspan="3" style="text-align: center;">
+                    <p>Nombre Completo</p>
+                </th>
+
+
+                <th>
+                    <p>Nombre Usuario</p>
+                </th>
+
+                <th>
+                    <p> Correo Electronico</p>
+                </th>
+                <th>
+                    <p>Cedula</p>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.telefono)
+                </th>
+                <th>
+                    <p>Genero</p>
+                </th>
+                <th colspan="3" style="text-align: center;">
+                    <p>Acciones</p>
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.apellido1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.apellido2)
+                    </td>
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cedula_Usuario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.telefono)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Genero.Genero1)
+                    </td>
+                    <td>
+
+
+                        <a class="btn btn-warning btn-small" href="@Url.Action("Edit", new { id = item.Id })">Editar</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-info btn-small" href="@Url.Action("Details", new { id = item.Id })">Detalles</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-danger btn-small" href="@Url.Action("Delete", new{ id = item.Id})">Eliminar</a>
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
