@@ -5,47 +5,86 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Detalles de reseña</h2>
 
 <div>
-    <h4>Resennia</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.cotenido)
-        </dt>
+    <div class="card table-responsive" style="border-radius: 8px;">
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    <b>
+                        <h4>
+                            Nombre completo
+                        </h4>
+                    </b>
+                </th>
+                <td>
+                    <h4>
+                        <text>@Html.DisplayFor(model => model.AspNetUser.nombre) @Html.DisplayFor(model =>
+                            model.AspNetUser.apellido1) @Html.DisplayFor(model => model.AspNetUser.apellido2) </text>
 
-        <dd>
-            @Html.DisplayFor(model => model.cotenido)
-        </dd>
+                    </h4>
+            </tr>
+            <tr>
+                <th>
+                    <b>
+                        <h4>Descripción</h4>
+                    </b>
+                </th>
+                <th>
+                    <h4>@Html.DisplayFor(model =>model.cotenido)</h4>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <b>
+                        <h4>Fecha</h4>
+                    </b>
+                </th>
+                <th>
+                    <h4>@Html.DisplayFor(model => model.fecha)</h4>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <b>
+                        <h4>Puntuacion</h4>
+                    </b>
+                </th>
+                <th>
+                     <fieldget class="starability-basic">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.puntuacion)
-        </dt>
+                    @for (int i = 1; i <= 5; i++)
+                    {
 
-        <dd>
-            @Html.DisplayFor(model => model.puntuacion)
-        </dd>
+                        if (Model.puntuacion == i)
+                        {
 
-        <dt>
-            @Html.DisplayNameFor(model => model.fecha)
-        </dt>
+                            @Html.RadioButtonFor(model => model.puntuacion, i, new { @type = "radio", @id = "first-rate" + i, @name = "rating",  @readonly = "true" })
+                            @Html.Label("first-rate" + i)
 
-        <dd>
-            @Html.DisplayFor(model => model.fecha)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AspNetUser.nombre)
-        </dt>
+                        }
+                        else
+                        {
 
-        <dd>
-            @Html.DisplayFor(model => model.AspNetUser.nombre)
-        </dd>
+                            @Html.RadioButtonFor(model => model.puntuacion, i, new { @type = "radio", @id = "first-rate" + i, @name = "rating", @readonly = "true" })
+                            @Html.Label("first-rate" + i)
 
-    </dl>
+                        } //Fin del else.
+
+                        //Fin del for.
+                    }
+
+                </fieldset>
+                </th>
+        </table>
+    </div>
+
+    
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id_Resenia }) |
-    @Html.ActionLink("Back to List", "Index")
+    <a class="btn btn-info" href="@Url.Action("Index", "Resennia")" class="btn btn-primary">Volver a reseñas</a>
+    <a class="btn btn-warning" href="@Url.Action("Edit", "Resennia", new { id = Model.id_Resenia })">Editar</a>
+  
 </p>
