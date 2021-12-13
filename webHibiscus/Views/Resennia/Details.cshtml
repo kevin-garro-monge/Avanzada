@@ -20,71 +20,72 @@
                 </th>
                 <td>
                     <h4>
-                        <text>@Html.DisplayFor(model => model.AspNetUser.nombre) @Html.DisplayFor(model =>
-                            model.AspNetUser.apellido1) @Html.DisplayFor(model => model.AspNetUser.apellido2) </text>
+                        <text>
+                            @Html.DisplayFor(model => model.AspNetUser.nombre) @Html.DisplayFor(model =>
+model.AspNetUser.apellido1) @Html.DisplayFor(model => model.AspNetUser.apellido2)
+</text>
 
-                    </h4>
-            </tr>
-            <tr>
-                <th>
-                    <b>
-                        <h4>Descripción</h4>
-                    </b>
-                </th>
-                <th>
-                    <h4>@Html.DisplayFor(model =>model.cotenido)</h4>
-                </th>
-            </tr>
-            <tr>
-                <th>
-                    <b>
-                        <h4>Fecha</h4>
-                    </b>
-                </th>
-                <th>
-                    <h4>@Html.DisplayFor(model => model.fecha)</h4>
-                </th>
-            </tr>
-            <tr>
-                <th>
-                    <b>
-                        <h4>Puntuacion</h4>
-                    </b>
-                </th>
-                <th>
-                     <fieldget class="starability-basic">
+</h4>
+</tr>
+<tr>
+    <th>
+        <b>
+            <h4>Descripción</h4>
+        </b>
+    </th>
+    <th>
+        <h4>@Html.DisplayFor(model => model.cotenido)</h4>
+    </th>
+</tr>
+<tr>
+    <th>
+        <b>
+            <h4>Fecha</h4>
+        </b>
+    </th>
+    <th>
+        <h4>@Html.DisplayFor(model => model.fecha)</h4>
+    </th>
+</tr>
+<tr>
+    <th>
+        <b>
+            <h4>Puntuacion</h4>
+        </b>
+    </th>
+    <th>
+        <fieldget class="starability-basic">
 
-                    @for (int i = 1; i <= 5; i++)
-                    {
+            @for (int i = 1; i <= 5; i++)
+            {
 
-                        if (Model.puntuacion == i)
-                        {
+                if (i == Model.puntuacion)
+                {
 
-                            @Html.RadioButtonFor(model => model.puntuacion, i, new { @type = "radio", @id = "first-rate" + i, @name = "rating",  @readonly = "true" })
-                            @Html.Label("first-rate" + i)
+                    <input type="radio" name="rating" value="@i" checked />
+                    <label title="Insatisfecho">@i Estrella</label>
+
+                }
+                else
+                {
+
+                    <input type="radio" name="rating" value="@i" />
+                    <label title="Insatisfecho">@i Estrella</label>
+
+                } //Fin del if.
+
+                //Fin del for.
+            }
+
+            </fieldset>
+    </th>
+</table>
+</div>
 
 
-                        }
-                        else
-                        {
-
-                            @Html.RadioButtonFor(model => model.puntuacion, i, new { @type = "radio", @id = "first-rate" + i, @name = "rating", @readonly = "true" })
-                            @Html.Label("first-rate" + i)
-
-                        } //Fin del else.
-
-                        //Fin del for.
-                    }
-
-                </fieldset>
-                </th>
-        </table>
-    </div>
-
-    
 </div>
 <p>
     <a class="btn btn-info" href="@Url.Action("Index", "Resennia")" class="btn btn-primary">Volver a reseñas</a>
     <a class="btn btn-warning" href="@Url.Action("Edit", "Resennia", new { id = Model.id_Resenia })">Editar</a>
-  
+
 </p>

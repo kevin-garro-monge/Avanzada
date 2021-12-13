@@ -54,32 +54,31 @@
                     </b>
                 </th>
                 <th>
-                     <fieldget class="starability-basic">
+                    <fieldget class="starability-basic">
 
-                    @for (int i = 1; i <= 5; i++)
-                    {
-
-                        if (Model.puntuacion == i)
+                        @for (int i = 1; i <= 5; i++)
                         {
 
-                            @Html.RadioButtonFor(model => model.puntuacion, i, new { @type = "radio", @id = "first-rate" + i, @name = "rating",  @readonly = "true" })
-                            @Html.Label("first-rate" + i)
+                            if (i == Model.puntuacion)
+                            {
 
+                                <input type="radio" name="rating" value="@i" checked />
+                                <label title="Insatisfecho">@i Estrella</label>
 
+                            }
+                            else
+                            {
+
+                                <input type="radio" name="rating" value="@i" />
+                                <label title="Insatisfecho">@i Estrella</label>
+
+                            } //Fin del if.
+
+                            //Fin del for.
                         }
-                        else
-                        {
 
-                            @Html.RadioButtonFor(model => model.puntuacion, i, new { @type = "radio", @id = "first-rate" + i, @name = "rating", @readonly = "true" })
-                            @Html.Label("first-rate" + i)
-
-                        } //Fin del else.
-
-                        //Fin del for.
-                    }
-
-                </fieldset>
-                </th>
+                        </fieldset>
+</th>
         </table>
     </div>
 
