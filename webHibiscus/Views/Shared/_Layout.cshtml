@@ -28,106 +28,147 @@
         </div>
         @*List of options*@
         <ul class="nav_list">
+            @if (User.IsInRole("Admin"))
+            {
+                <li>
+                    <a href="@Url.Action("Index", "Home")">
+                        <i class='bx bxs-home'></i>
+                        <span class="links_name">Home</span>
+                    </a>
+                    <span class="tooltip">Home</span>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "AspNetUsers")">
+                        <i class='bx bx-user'></i>
+                        <span class="links_name">Usuarios</span>
+                    </a>
+                    <span class="tooltip">Usuarios</span>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Resennia")">
+                        <i class='bx bx-comment-dots'></i>
+                        <span class="links_name">Reseñas</span>
+                    </a>
+                    <span class="tooltip">Reseñas</span>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Reserva")">
+                        <i class='bx bx-book-content'></i>
+                        <span class="links_name">Reservas</span>
+                    </a>
+                    <span class="tooltip">Reservas</span>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Servicio")">
+                        <i class='bx bx-briefcase-alt-2'></i>
+                        <span class="links_name">Servicios</span>
+                    </a>
+                    <span class="tooltip">Servicios</span>
+                </li>
+                <li>
+                    <a href="@Url.Action("About", "Home")">
+                        <i class='bx bx-detail'></i>
+                        <span class="links_name">Accerca</span>
+                    </a>
+                    <span class="tooltip">Accerca</span>
+                </li>
 
-            @* No BORRAR HASTA LA ENTREGA FINAL *@
-
-            @*<li>
-                    <i class="bx bx-search"></i>
-                    <input type="text" placeholder="Buscar..." />
-                    <span class="tooltip">Buscar</span>
-                </li>*@
-            <li>
-                <a href="@Url.Action("Index", "Home")">
-                    <i class='bx bxs-home'></i>
-                    <span class="links_name">Home</span>
-                </a>
-                <span class="tooltip">Home</span>
-            </li>
-            <li>
-                <a href="@Url.Action("Index", "AspNetUsers")">
-                    <i class='bx bx-user'></i>
-                    <span class="links_name">Usuarios</span>
-                </a>
-                <span class="tooltip">Usuarios</span>
-            </li>
-            <li>
-                <a href="@Url.Action("Index", "Resennia")">
-                    <i class='bx bx-comment-dots'></i>
-                    <span class="links_name">Reseñas</span>
-                </a>
-                <span class="tooltip">Reseñas</span>
-            </li>
-            <li>
-                <a href="@Url.Action("Index", "Reserva")">
-                    <i class='bx bx-book-content'></i>
-                    <span class="links_name">Reservas</span>
-                </a>
-                <span class="tooltip">Reservas</span>
-            </li>
-            <li>
-                <a href="@Url.Action("Index", "Servicio")">
-                    <i class='bx bx-briefcase-alt-2'></i>
-                    <span class="links_name">Servicios</span>
-                </a>
-                <span class="tooltip">Servicios</span>
-            </li>
-            <li>
-                <a href="@Url.Action("About", "Home")">
-                    <i class='bx bx-detail'></i>
-                    <span class="links_name">Accerca</span>
-                </a>
-                <span class="tooltip">Accerca</span>
-            </li>
-            <li>
-                <a href="@Url.Action("Contact", "Home")">
-                    <i class='bx bx-phone'></i>
-                    <span class="links_name">Contacto</span>
-                </a>
-                <span class="tooltip">Contacto</span>
-            </li>
-
-            @* No BORRAR HASTA LA ENTREGA FINAL *@
-
-            <li>
+                // Como ver los roles asignados?
+                <li>
                     <a href="@Url.Action("Index", "AspNetRole")">
                         <i class='bx bx-block'></i>
-                        <span class="links_name">Testing</span>
+                        <span class="links_name">Roles</span>
                     </a>
-                    <span class="tooltip">Testing</span>
+                    <span class="tooltip">Roles</span>
                 </li>
+            }
+
+            @if (User.IsInRole("Cliente"))
+            {
+                <li>
+                    <a href="@Url.Action("Index", "Home")">
+                        <i class='bx bxs-home'></i>
+                        <span class="links_name">Home</span>
+                    </a>
+                    <span class="tooltip">Home</span>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Resennia")">
+                        <i class='bx bx-comment-dots'></i>
+                        <span class="links_name">Reseñas</span>
+                    </a>
+                    <span class="tooltip">Reseñas</span>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Reserva")">
+                        <i class='bx bx-book-content'></i>
+                        <span class="links_name">Reservas</span>
+                    </a>
+                    <span class="tooltip">Reservas</span>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Servicio")">
+                        <i class='bx bx-briefcase-alt-2'></i>
+                        <span class="links_name">Servicios</span>
+                    </a>
+                    <span class="tooltip">Servicios</span>
+                </li>
+                <li>
+                    <a href="@Url.Action("About", "Home")">
+                        <i class='bx bx-detail'></i>
+                        <span class="links_name">Accerca</span>
+                    </a>
+                    <span class="tooltip">Accerca</span>
+                </li>
+            }
         </ul>
         @*User part*@
-        <div class="profile_content">
-            <div class="profile">
-                <div class="profile_details">
-                    <div class="name_job">
-                        <div class="name">@Html.Partial("_LoginPartial")</div>
+        @if (User.IsInRole("Cliente") || User.IsInRole("Admin"))
+        {
+            <div class="profile_content">
+                <div class="profile">
+                    <div class="profile_details">
+                        <div class="name_job">
+                            <div class="name">@Html.Partial("_LoginPartial")</div>
+                        </div>
                     </div>
+                    <div class="job"><a href="javascript:document.getElementById('logoutForm').submit()"><i class="bx bx-log-out" id="log_out"></i></a></div>
                 </div>
-                <i class="bx bx-log-out" id="log_out"></i>
             </div>
-        </div>
+        }
+        else
+        {
+            <div class="profile_content">
+                <div class="profile">
+                    <div class="profile_details">
+                        <div class="name_job">
+                            <div class="name">@Html.Partial("_LoginPartial")</div>
+                        </div>
+                    </div>
+                    <i class='bx bx-log-in' id="log_out"></i>
+                </div>
+            </div>
+        }
     </div>
 
 
 
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+
     </div>
 
     <script>
         let btn = document.querySelector("#btn");
+        let log = document.querySelector("#log_out");
+
         let sidebar = document.querySelector(".sidebar");
-        let searchBtn = document.querySelector(".bx-search");
 
         btn.onclick = function () {
             sidebar.classList.toggle("active");
         };
-        searchBtn.onclick = function () {
+
+        log_out.onclick = function () {
             sidebar.classList.toggle("active");
         };
     </script>

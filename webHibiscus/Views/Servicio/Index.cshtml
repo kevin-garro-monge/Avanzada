@@ -17,17 +17,31 @@
 
     <div class="container">
         <div class="card">
-            <div class="add">
-                <a class="btn btn-info btn-sm" href="@Url.Action("Details", new { id = item.id_Servicio })">Detalles</a>
-            </div>
+            @if (User.IsInRole("Admin"))
+            {
+                <div class="add">
+                    <a class="btn btn-info btn-sm" href="@Url.Action("Details", new { id = item.id_Servicio })">Detalles</a>
+                </div>
+            }
+
+            @* Arreglar estilos y hacer link a agentar un servicio *@
+            @if (User.IsInRole("Cliente"))
+            {
+                <div class="add">
+                    <a class="btn btn-info btn-sm" href="@Url.Action("Details", new { id = item.id_Servicio })">Detalles</a>
+                </div>
+            }
 
             <div class="content">
                 <h4><b>@Html.DisplayFor(modelItem => item.nombre)</b></h4>
                 <p>@Html.DisplayFor(modelItem => item.descripcion)</p>
                 <p>@Html.DisplayFor(modelItem => item.precio)</p>
 
-                <a class="btn btn-warning btn-sm" href="@Url.Action("Edit", new { id = item.id_Servicio })">Editar</a>
-                <a class="btn btn-danger btn-sm" href="@Url.Action("Delete", new { id = item.id_Servicio })">Eliminar</a>
+                @if (User.IsInRole("Admin"))
+                {
+                    <a class="btn btn-warning btn-sm" href="@Url.Action("Edit", new { id = item.id_Servicio })">Editar</a>
+                    <a class="btn btn-danger btn-sm" href="@Url.Action("Delete", new { id = item.id_Servicio })">Eliminar</a>
+                }
             </div>
         </div>
     </div>

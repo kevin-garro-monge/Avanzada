@@ -34,6 +34,14 @@
     <div class="col-md-4">
         <h2>Danos tu opicion</h2>
         <p>Si ya haz tenido un cita en nuestra barberia, te invitamos a dar tu opicion, nos ayudara a mejorar!</p>
-        <p><a class="btn btn-warning btn-sm" href="@Url.Action("Create", "Resennia")" style="margin-left: 30%; margin-top: 20%;">Reseñas</a></p>
+        @if (User.IsInRole("Cliente") || User.IsInRole("Admin"))
+        {
+            <p><a class="btn btn-warning btn-sm" href="@Url.Action("Create", "Resennia")" style="margin-left: 30%; margin-top: 20%;">Reseñas</a></p>
+        }
+        else
+        {
+            <p><a class="btn btn-success btn-sm" href="@Url.Action("Register", "Account")" style="margin-left: 30%; margin-top: 20%;">Registrarse</a></p>
+            <p><a class="btn btn-default btn-sm" href="@Url.Action("Login", "Account")" style="margin-left: 32%;">Ingresar</a></p>
+        }
     </div>
 </div>
