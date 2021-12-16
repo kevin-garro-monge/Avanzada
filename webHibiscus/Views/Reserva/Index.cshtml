@@ -13,24 +13,24 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.fecha_Hora)
+            Fecha de cita
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+            Cliente
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AspNetUser1.Email)
+            Empleado
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Servicio.nombre)
+            Nombre del servicio
         </th>
-        <th></th>
+        <th>Acciones</th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.fecha_Hora)
+            @Html.ValueFor(modelItem => item.fecha_Hora, "{0:dd/MM/yyyy}")
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.AspNetUser.Email)

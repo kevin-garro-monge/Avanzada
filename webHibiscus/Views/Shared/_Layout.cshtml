@@ -12,6 +12,7 @@
     <link href="~/Content/cardStyle.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/starability-all.css" rel="stylesheet" />
 
+
     <!-- Boxicons CDN Link -->
     <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
           rel="stylesheet" />
@@ -151,8 +152,6 @@
         }
     </div>
 
-
-
     <div class="container body-content">
         @RenderBody()
 
@@ -173,8 +172,11 @@
         };
     </script>
 
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+
 </body>
 </html>

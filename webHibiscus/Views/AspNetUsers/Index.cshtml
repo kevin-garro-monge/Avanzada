@@ -10,13 +10,23 @@
     <div class="row">
         <h2>Usuarios</h2>
         @* <div class="col-md-12" style="text-align: right; margin-bottom: 15px;">
-            <a class="btn btn-primary btn-small" href="@Url.Action("Create")">Crear Usuario</a>
-        </div> *@
+                <a class="btn btn-primary btn-small" href="@Url.Action("Create")">Crear Usuario</a>
+            </div> *@
     </div>
 
 
     <div class="card table-responsive" style="border-radius: 8px;">
-        <table class="table table-striped">
+
+        <div style="margin-left:2%">
+
+            <br>
+            <input type="text" id="busquedaNombre" onkeyup="myFunction()" placeholder="Buscar usuario...">
+            <br>
+            <br>
+
+        </div>
+
+        <table class="table table-striped" id="tablaUsuarios" onclick="pulguis()">
 
             <tr>
                 <th colspan="3" style="text-align: center;">
@@ -89,5 +99,9 @@
             }
 
         </table>
+
+        <script src="~/Scripts/javaScriptIndexUsuarios.js"></script>
+
     </div>
+
 </div>

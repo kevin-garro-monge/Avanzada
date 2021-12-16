@@ -11,10 +11,13 @@ namespace webHibiscus
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Reserva
     {
         public int id_Reserva { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime fecha_Hora { get; set; }
         public string id_Cliente { get; set; }
         public string id_Empleado { get; set; }
