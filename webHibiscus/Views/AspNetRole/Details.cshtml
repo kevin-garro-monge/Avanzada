@@ -5,23 +5,39 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Detalles</h2>
 
 <div>
-    <h4>AspNetRole</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-    </dl>
+    <div class="card table-responsive" style="border-radius: 8px;">
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    <h4>
+                        <b>
+                             @Html.DisplayNameFor(model => model.Name)
+                        </b>
+                    </h4>
+                </th>
+                <th>
+                    <h4>
+                        <b>
+                            @Html.DisplayFor(model => model.Name)
+                        </b>
+                    </h4>
+                </th>
+          
+            </tr>           
+        </table>
+    </div>
 </div>
+
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+
+    
+    <a class="btn btn-info" href="@Url.Action("Index", "AspNetRole")">
+      Volver atras
+    </a>
+    <a class="btn btn-warning" href="@Url.Action("Edit", "AspNetRole", new { id = Model.Id })">
+      Editar
+    </a>
 </p>

@@ -5,30 +5,37 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Roles</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a class="btn btn-info" href="@Url.Action("Create")">Crear nuevo rol</a>
+
 </p>
-<table class="table">
+<div class="card table-responsive" style="border-radius: 8px;">
+<table class="table table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
-        <th></th>
+        <th colspan=""></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <a class="btn btn-info" href="@Url.Action("Details", new { id = item.Id })">Detalles</a>
+          
+                <a class="btn btn-warning" href="@Url.Action("Edit", new { id = item.Id })">Editar</a>
+                
+           
+                <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.Id })">Eliminar</a>
+                
+            </td>
+        </tr>
+    }
 
 </table>
