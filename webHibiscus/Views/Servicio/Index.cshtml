@@ -21,7 +21,15 @@
     <div class="container">
         <div class="card">
             <div class="add">
-                <a class="btn btn-info" style="margin-top:5px;" href="@Url.Action("Create","Reserva", new { id = item.id_Servicio })">Agendar</a>
+                @if (User.IsInRole("Admin"))
+                {
+                   <a class="btn btn-info btn-lg" style="margin-bottom:40px;" href="@Url.Action("Create","Reserva", new { id = item.id_Servicio })">Agendar</a>
+                }
+                 @if (User.IsInRole("Cliente"))
+                {
+                   <a class="btn btn-info btn-lg" style="margin-bottom:60px;" href="@Url.Action("Create","Reserva", new { id = item.id_Servicio })">Agendar</a>
+                }
+                
             </div>
 
             <div class="content">

@@ -28,7 +28,7 @@
     <div class="col-md-4">
         <h2>Mas sobre nosotros</h2>
         <p>Te invitamos a conocer un poco mas sobre nosotros dandole al botón:</p>
-        <p><a class="btn btn-info btn-sm" href="@Url.Action("About", "Home")" style="margin-left: 30%; margin-top: 20%;">Accerca</a></p>
+        <p><a class="btn btn-info" href="@Url.Action("About", "Home")" style="margin-left: 30%; margin-top: 20%;">Accerca</a></p>
     </div>
 
     <div class="col-md-4">
@@ -36,12 +36,15 @@
         <p>Si ya haz tenido un cita en nuestra barberia, te invitamos a dar tu opicion, nos ayudara a mejorar!</p>
         @if (User.IsInRole("Cliente") || User.IsInRole("Admin"))
         {
-            <p><a class="btn btn-warning btn-sm" href="@Url.Action("Create", "Resennia")" style="margin-left: 30%; margin-top: 20%;">Reseñas</a></p>
+            <p><a class="btn btn-warning" href="@Url.Action("Create", "Resennia")" style="margin-left: 30%; margin-top: 20%;">Reseñas</a></p>
         }
         else
         {
-            <p><a class="btn btn-success btn-sm" href="@Url.Action("Register", "Account")" style="margin-left: 30%; margin-top: 20%;">Registrarse</a></p>
-            <p><a class="btn btn-default btn-sm" href="@Url.Action("Login", "Account")" style="margin-left: 32%;">Ingresar</a></p>
+
+            <div class="row">
+            <p><a class="btn btn-success" href="@Url.Action("Register", "Account")" style="margin-left: 30%; margin-top: 20%;">Registrarse</a></p>
+            <p><a class="btn btn-default" href="@Url.Action("Login", "Account")" style="margin-left: 32%;">Ingresar</a></p>
+             </div>
         }
     </div>
 </div>
