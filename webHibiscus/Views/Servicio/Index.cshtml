@@ -8,7 +8,10 @@
 <h2>Servicios</h2>
 
 <div style="margin-bottom: 15px;">
-    <a href="@Url.Action("Create")" class="btn btn-primary">Crear Servicio</a>
+    @if (User.IsInRole("Admin"))
+    {
+        <a href="@Url.Action("Create")" class="btn btn-primary">Crear Servicio</a>
+    }
 </div>
 
 @foreach (var item in Model)
@@ -17,21 +20,9 @@
 
     <div class="container">
         <div class="card">
-            @if (User.IsInRole("Admin"))
-            {
             <div class="add">
-                <a class="btn btn-info btn-bg" href="@Url.Action("Details", new { id = item.id_Servicio })">Detalles</a>
-                <a class="btn btn-info" style="margin-top:5px;" href="@Url.Action("Create","Reserva")">Agendar</a>
+                <a class="btn btn-info" style="margin-top:5px;" href="@Url.Action("Create","Reserva", new { id = item.id_Servicio })">Agendar</a>
             </div>
-            }
-
-            @* Arreglar estilos y hacer link a agentar un servicio *@
-            @if (User.IsInRole("Cliente"))
-            {
-                <div class="add">
-                    <a class="btn btn-info btn-sm" href="@Url.Action("Create","Reserva")">Agendar</a>
-                </div>
-            }
 
             <div class="content">
                 <h4><b>@Html.DisplayFor(modelItem => item.nombre)</b></h4>
@@ -40,6 +31,7 @@
 
                 @if (User.IsInRole("Admin"))
                 {
+                    <a class="btn btn-info btn-sm" href="@Url.Action("Details", new { id = item.id_Servicio })">Detalles</a>
                     <a class="btn btn-warning btn-sm" href="@Url.Action("Edit", new { id = item.id_Servicio })">Editar</a>
                     <a class="btn btn-danger btn-sm" href="@Url.Action("Delete", new { id = item.id_Servicio })">Eliminar</a>
                 }

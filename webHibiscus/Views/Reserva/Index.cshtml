@@ -8,9 +8,10 @@
 <h2>Reservas</h2>
 
 <p>
-
-    <a class="btn btn-info" href="@Url.Action("Create")">Crear reserva</a>
-
+    @if (User.IsInRole("Admin"))
+    {
+        <a class="btn btn-info" href="@Url.Action("Create", new { id = 1 })">Crear reserva</a>
+    }
 </p>
 <div class="card table-responsive" style="border-radius: 8px;">
     <table class="table table-striped">

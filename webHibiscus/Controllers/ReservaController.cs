@@ -37,11 +37,22 @@ namespace webHibiscus.Controllers
         }
 
         // GET: Reserva/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Servicio servicio = db.Servicios.Find(id);
+            if (servicio == null)
+            {
+                return HttpNotFound();
+            }
+
             ViewBag.id_Cliente = new SelectList(db.AspNetUsers, "Id", "Email");
             ViewBag.id_Empleado = new SelectList(db.AspNetUsers, "Id", "Email");
-            ViewBag.id_Servicio = new SelectList(db.Servicios, "id_Servicio", "nombre");
+            ViewBag.id_Servicio = new SelectList(db.Servicios, "id_Servicio", "nombre", servicio.id_Servicio);
+
             return View();
         }
 
